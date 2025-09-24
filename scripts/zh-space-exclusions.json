@@ -1,0 +1,16 @@
+{
+  "exclusions": [
+    "GitHub",
+    "WeChat",
+    "QQ音乐",
+    "网易云音乐",
+    "支付宝",
+    "微信支付",
+    "iPhone",
+    "iPad",
+    "MacBook",
+    "VS Code",
+    "Claude Code",
+    "AI助手"
+  ]
+}
