@@ -1,135 +1,331 @@
-# ccinit (Claude Code Init)
+# 🚀 ccinit (Claude Code Init)
 
-提供完整的中文 Claude Code 增强功能。
+> 专为中文开发者打造的 Claude Code 增强工具包，提供完整的智能开发工作流
 
-## 🚀 快速安装
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![中文文档](https://img.shields.io/badge/文档-中文-red.svg)](README.md)
+
+**ccinit** 是一个专业的 Claude Code 增强系统，通过 **40+ 个智能命令**、**8 个专家角色** 和 **10+ 个自动化脚本**，为开发者提供从项目规划到部署的完整工作流支持。
+
+## ✨ 核心特性
+
+### 🎯 三大核心模块
+
+| 模块 | 数量 | 描述 | 示例 |
+|------|------|------|------|
+| **🔧 智能命令** | 40+ | 覆盖完整开发生命周期的自定义命令 | `/plan`, `/refactor`, `/pr-review` |
+| **👥 专家角色** | 8 个 | 提供专业领域的深度分析和建议 | `architect`, `security`, `performance` |
+| **⚡ 自动化脚本** | 10+ | 在关键节点自动执行的质量保证脚本 | 提交检查、格式化、权限保护 |
+
+### 🌟 独特优势
+
+- **🇨🇳 本地化优先**：完整的中文支持，包括文档、命令和脚本
+- **🔒 安全防护**：多重安全检查，防止危险操作和敏感信息泄露
+- **🤖 智能化工作流**：基于上下文的智能建议和自动化处理
+- **📈 质量保证**：TDD 驱动的开发流程，确保代码质量
+
+## 🚀 快速开始
+
+### 一键安装
 
 ```bash
-# 克隆并安装
+# 方法一：自动安装（推荐）
+curl -fsSL https://raw.githubusercontent.com/kedoupi/ccinit/main/install.sh | bash
+
+# 方法二：手动安装
 git clone https://github.com/kedoupi/ccinit.git
 cd ccinit
+chmod +x install.sh
 ./install.sh
-
-# 配置 Claude Desktop：将自定义指令路径设置为 ~/.claude
 ```
 
-## 📚 主要特性
+### 配置 Claude Desktop
 
-通过三大核心功能定制 Claude Code 的行为：
+1. 打开 Claude Desktop 应用
+2. 进入 **设置 (Settings)**
+3. 选择 **开发者 (Developer)** 选项卡
+4. 将 **自定义指令路径** 设置为：`~/.claude`
+5. 重启 Claude Desktop
 
-- **命令**：以 `/` 开头的自定义命令
-- **角色**：专家视角的角色设置
-- **Hooks**：在特定时机自动执行脚本
+### 验证安装
 
----
-
-## 功能列表
-
-### 命令
-
-存储为 `/commands` 目录中的 Markdown 文件。通过在 `/` 后输入文件名来执行。
-
-| 命令 | 描述 |
-| :--- | :--- |
-| `/plan` | 激活实施计划模式，制定详细的实施策略 |
-| `/refactor` | 执行安全的逐步代码重构，评估 SOLID 原则遵循情况 |
-| `/pr-create` | 基于 Git 变更分析实现高效的 Pull Request 工作流程 |
-| `/pr-review` | 通过系统性审查确保代码质量和架构合理性 |
-| `/pr-auto-update` | 自动更新 Pull Request |
-| `/pr-feedback` | PR 反馈处理 |
-| `/pr-issue` | 列出项目问题清单 |
-| `/pr-list` | 显示 Pull Request 列表 |
-| `/pr-merge` | 合并 Pull Request |
-| `/tech-debt` | 分析项目技术债务并创建优先级改进计划 |
-| `/fix-error` | 基于错误消息建议代码修复方案 |
-| `/smart-review` | 执行高级审查以提升代码质量 |
-| `/semantic-commit` | 将大变更分解为有意义的最小单元并依次提交 |
-| `/commit-message` | 生成符合规范的提交信息 |
-| `/analyze-dependencies` | 分析项目依赖关系 |
-| `/analyze-performance` | 分析系统性能 |
-| `/check-fact` | 事实检查验证 |
-| `/check-github-ci` | GitHub CI 监控 |
-| `/check-prompt` | 提示词检查 |
-| `/context7` | 上下文管理工具 |
-| `/design-patterns` | 设计模式分析 |
-| `/explain-code` | 代码解释说明 |
-| `/multi-role` | 多角色协作 |
-| `/role-debate` | 角色辩论模式 |
-| `/role-help` | 角色帮助说明 |
-| `/role` | 切换专家角色 |
-| `/screenshot` | 截图分析 |
-| `/search-gemini` | Gemini 网络搜索 |
-| `/sequential-thinking` | 序列思考模式 |
-| `/show-plan` | 显示执行计划 |
-| `/spec` | 规范生成 |
-| `/style-ai-writting` | AI 写作风格检查 |
-| `/task` | 任务管理 |
-| `/team-collab` | 团队协作工具 |
-| `/ultrathink` | 深度思考模式 |
-| `/update-dart-doc` | 更新 Dart 文档 |
-| `/update-doc-string` | 更新文档字符串 |
-| `/update-flutter-deps` | 更新 Flutter 依赖 |
-| `/update-node-deps` | 更新 Node.js 依赖 |
-| `/update-rust-deps` | 更新 Rust 依赖 |
-
-### 角色
-
-定义在 `agents/roles/` 目录的 Markdown 文件中。为 Claude 提供专家视角以获得更准确的答案。
-
-| 角色 | 描述 |
-| :--- | :--- |
-| `/role analyzer` | 根因分析专家，使用 5Why 方法和系统思维解决复杂问题 |
-| `/role architect` | 软件架构师，审查和提出设计方案 |
-| `/role frontend` | 前端开发专家，专注 UI/UX 和现代前端技术 |
-| `/role mobile` | 移动开发专家，专注 iOS/Android 平台优化 |
-| `/role performance` | 性能优化专家，建议速度和内存使用改进 |
-| `/role qa` | 质量保证专家，制定测试策略和自动化方案 |
-| `/role reviewer` | 代码审查员，从可读性和可维护性角度评估代码 |
-| `/role security` | 安全专家，指出漏洞和安全风险 |
-
-### Hooks
-
-在 `settings.json` 中配置以自动化开发工作。
-
-| 执行脚本 | 事件 | 描述 |
-| :--- | :--- | :--- |
-| `deny-check.sh` | `PreToolUse` | 防止执行 `rm -rf /` 等危险命令 |
-| `check-ai-commit.sh` | `PreToolUse` | 当提交消息包含 AI 签名时报错 |
-| `preserve-file-permissions.sh` | `PreToolUse` / `PostToolUse` | 保持文件权限不变 |
-| `auto-comment.sh` | `PostToolUse` | 创建新文件或重大编辑时提示添加文档字符串 |
-| `zh-space-format.sh` | `PostToolUse` | 保存文件时自动格式化中文与字母数字字符间的空格 |
-| `check-continue.sh` | `Stop` | 检查是否需要继续执行任务 |
-| `append_ultrathink.py` | `UserPromptSubmit` | 用户提交提示时自动添加深度思考模式 |
-| 通知音效 | `Notification` / `Stop` | 操作完成时播放音效并显示系统通知 |
-
----
-
-## 安装
-
-1. 克隆仓库
-2. 运行安装脚本：`./install.sh`
-3. 在 Claude Desktop 中设置自定义指令路径为 `~/.claude`
-4. 重启 Claude Desktop 开始使用
-
-## 使用示例
+在 Claude Code 中输入以下命令测试：
 
 ```bash
-# 创建实施计划
-/plan
-"为用户认证功能创建实施计划"
-
-# 代码重构
-/refactor
-"重构这个复杂的函数"
-
-# 安全审查
-/role security
-"对这个项目进行安全检查"
-
-# 架构评估
-/role architect
-"评估当前系统架构"
+/help           # 查看所有可用命令
+/role architect # 切换到架构师角色
+/plan          # 创建项目计划
 ```
+
+---
+
+## 📖 功能详解
+
+### 🔧 智能命令系统 (40+)
+
+命令按功能分类，通过 `/命令名` 来执行。所有命令都支持中文交互。
+
+#### 📋 项目管理类
+| 命令 | 功能 | 使用场景 |
+|------|------|----------|
+| `/plan` | 激活实施计划模式 | 制定详细的开发策略和时间规划 |
+| `/spec` | 生成项目规范 | 创建技术方案和需求文档 |
+| `/task` | 任务管理 | 分解和跟踪开发任务进度 |
+| `/show-plan` | 显示执行计划 | 查看当前项目的实施路线图 |
+
+#### 🔍 代码质量类
+| 命令 | 功能 | 使用场景 |
+|------|------|----------|
+| `/refactor` | 安全重构 | 遵循 SOLID 原则的代码重构 |
+| `/smart-review` | 智能审查 | 全面的代码质量和架构审查 |
+| `/fix-error` | 错误修复 | 基于错误信息的自动修复建议 |
+| `/tech-debt` | 技术债务分析 | 识别并优先级排序技术债务 |
+
+#### 🚀 Git 工作流类
+| 命令 | 功能 | 使用场景 |
+|------|------|----------|
+| `/pr-create` | 创建 PR | 智能分析变更并创建规范的 PR |
+| `/pr-review` | PR 审查 | 系统性的代码审查和质量检查 |
+| `/pr-auto-update` | 自动更新 PR | 根据反馈自动更新 PR 内容 |
+| `/semantic-commit` | 语义化提交 | 将变更分解为符合规范的提交 |
+
+#### 📊 分析检测类
+| 命令 | 功能 | 使用场景 |
+|------|------|----------|
+| `/analyze-performance` | 性能分析 | 识别性能瓶颈和优化机会 |
+| `/analyze-dependencies` | 依赖分析 | 检查依赖关系和安全漏洞 |
+| `/check-github-ci` | CI 监控 | 检查构建状态和测试结果 |
+| `/design-patterns` | 设计模式 | 分析代码中的设计模式使用 |
+
+#### 🤖 AI 增强类
+| 命令 | 功能 | 使用场景 |
+|------|------|----------|
+| `/ultrathink` | 深度思考 | 复杂问题的多维度分析 |
+| `/multi-role` | 多角色协作 | 从多个专家角度分析问题 |
+| `/search-gemini` | 智能搜索 | 通过 Gemini 获取最新技术信息 |
+| `/sequential-thinking` | 序列思考 | 逐步分解复杂逻辑问题 |
+
+### 👥 专家角色系统 (8个)
+
+智能角色切换，每个角色都有独特的分析视角和专业工具。使用 `/role 角色名` 来切换。
+
+#### 🏗️ 架构与设计
+| 角色 | 专长 | 核心工具 | 应用场景 |
+|------|------|----------|----------|
+| `architect` | 系统架构设计 | 架构审查、技术选型 | 系统设计、技术决策 |
+| `analyzer` | 根因分析 | 5Why 方法、系统思维 | 问题诊断、故障排查 |
+
+#### 💻 开发与优化
+| 角色 | 专长 | 核心工具 | 应用场景 |
+|------|------|----------|----------|
+| `frontend` | 前端开发 | UI/UX 设计、现代框架 | 界面开发、用户体验优化 |
+| `mobile` | 移动开发 | iOS/Android 优化 | 移动应用开发和性能调优 |
+| `performance` | 性能优化 | 性能分析、内存优化 | 性能瓶颈识别和解决 |
+
+#### 🛡️ 质量与安全
+| 角色 | 专长 | 核心工具 | 应用场景 |
+|------|------|----------|----------|
+| `security` | 安全审计 | OWASP 合规、漏洞检测 | 安全审查、风险评估 |
+| `qa` | 质量保证 | 测试策略、自动化测试 | 测试规划、质量控制 |
+| `reviewer` | 代码审查 | 可读性、可维护性评估 | 代码评审、最佳实践 |
+
+### ⚡ 自动化脚本系统 (10+)
+
+在关键节点自动执行，确保开发流程的安全性和一致性。
+
+#### 🔒 安全防护类
+| 脚本 | 触发时机 | 功能 | 保护目标 |
+|------|----------|------|----------|
+| `deny-check.sh` | 命令执行前 | 阻止危险命令 | 防止误删除、破坏性操作 |
+| `check-ai-commit.sh` | 提交前 | AI 签名检查 | 避免 AI 生成的提交信息泄露 |
+| `preserve-file-permissions.sh` | 文件操作前后 | 权限保护 | 维持文件系统权限一致性 |
+
+#### 📝 格式与质量类
+| 脚本 | 触发时机 | 功能 | 优化目标 |
+|------|----------|------|----------|
+| `zh-space-format.sh` | 文件保存后 | 中文格式化 | 自动处理中英文间距 |
+| `auto-comment.sh` | 创建文件后 | 文档提醒 | 确保代码文档完整性 |
+
+#### 🎯 流程控制类
+| 脚本 | 触发时机 | 功能 | 控制目标 |
+|------|----------|------|----------|
+| `check-continue.sh` | 任务结束 | 任务连续性检查 | 确保重要任务不遗漏 |
+| `append_ultrathink.py` | 用户输入 | 深度思考模式 | 自动激活高级分析功能 |
+
+---
+
+## 🎯 智能工作流示例
+
+### 完整开发流程演示
+
+#### 1️⃣ 项目启动阶段
+```bash
+# 创建详细的项目计划
+/plan
+"开发一个用户认证系统，包括注册、登录、密码重置功能"
+
+# 生成技术规范
+/spec
+"定义 JWT 认证的技术实现方案"
+
+# 架构设计评估
+/role architect
+"评估 RESTful API + JWT 的架构方案"
+```
+
+#### 2️⃣ 开发实施阶段
+```bash
+# 多角色协作分析
+/multi-role
+"从安全、性能、前端三个角度分析用户认证实现"
+
+# 代码质量保证
+/smart-review
+# 系统会自动检查代码规范、安全漏洞、性能问题
+
+# 安全专项审查
+/role security
+"检查用户认证模块的安全风险"
+```
+
+#### 3️⃣ 测试与优化阶段
+```bash
+# 性能分析优化
+/role performance
+"分析登录接口的性能瓶颈"
+
+# QA 测试策略
+/role qa
+"制定用户认证功能的测试计划"
+
+# 技术债务管理
+/tech-debt
+"评估当前代码的技术债务和改进建议"
+```
+
+#### 4️⃣ 发布与维护阶段
+```bash
+# 创建规范的 Pull Request
+/pr-create
+# 自动分析变更、生成 PR 描述、设置标签
+
+# 语义化提交
+/semantic-commit
+# 将复杂变更分解为多个符合规范的提交
+
+# 依赖安全检查
+/analyze-dependencies
+"检查项目依赖的安全漏洞"
+```
+
+## 🚀 进阶功能
+
+### 🤝 多角色协作模式
+
+**智能角色推荐**：系统根据问题类型自动推荐最适合的专家角色组合。
+
+```bash
+# 复杂问题的多维分析
+/multi-role
+"分析微服务架构的性能问题"
+# 自动调用：architect + performance + qa
+
+# 角色辩论模式
+/role-debate
+"讨论单体架构 vs 微服务架构的选择"
+# 多个角色进行结构化辩论
+```
+
+### 🧠 深度思考系统
+
+**渐进式问题解决**：从简单到复杂的分析路径。
+
+```bash
+# 激活深度分析模式
+/ultrathink
+"如何设计一个支持百万用户的实时聊天系统？"
+
+# 序列化思考过程
+/sequential-thinking
+"逐步分析系统扩容的技术方案"
+```
+
+### 🔍 智能搜索与验证
+
+**实时技术信息获取**：集成最新的技术资讯和最佳实践。
+
+```bash
+# 获取最新技术信息
+/search-gemini
+"2024年最新的 React 19 特性"
+
+# 事实验证检查
+/check-fact
+"验证 Node.js 20 的性能提升数据"
+```
+
+## 🎨 自定义与扩展
+
+### 添加自定义命令
+
+1. 在 `commands/` 目录创建新的 `.md` 文件
+2. 按照现有命令的格式编写
+3. 重启 Claude Code 即可使用
+
+```markdown
+<!-- commands/my-command.md -->
+---
+name: my-command
+description: "我的自定义命令"
+---
+
+# 命令实现内容
+```
+
+### 创建专属角色
+
+1. 在 `agents/roles/` 目录创建角色文件
+2. 定义专业领域和工具
+3. 设置触发条件和行为模式
+
+```markdown
+<!-- agents/roles/my-expert.md -->
+---
+name: my-expert
+description: "我的专业角色"
+model: opus
+tools: [Read, Write, Bash]
+---
+
+# 角色定义和行为规范
+```
+
+## 🛠️ 技术架构
+
+### 系统设计原则
+
+- **模块化架构**：命令、角色、脚本相互独立
+- **插件化扩展**：支持自定义组件的热插拔
+- **事件驱动**：基于 Hook 的自动化触发机制
+- **安全优先**：多层安全检查和权限控制
+
+### 目录结构
+
+```
+ccinit/
+├── commands/          # 智能命令库
+├── agents/roles/     # 专家角色定义
+├── scripts/          # 自动化脚本
+├── install.sh        # 一键安装脚本
+└── CLAUDE.md         # 全局指令文件
+```
+
+### 兼容性支持
+
+- **操作系统**：macOS, Linux, Windows (WSL)
+- **开发语言**：Node.js, Python, Rust, Dart, Java
+- **Claude 版本**：Claude Desktop 最新版本
+- **依赖要求**：bash, git (基础工具)
 
 ## 许可证
 
