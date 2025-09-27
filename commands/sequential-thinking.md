@@ -1,15 +1,15 @@
-## Sequential Thinking
+## 序列化 Thinking
 
 Solve complex problems step-by-step through a dynamic, iterative thinking process. This flexible approach allows for course corrections and revisions during the thinking process.
 
-### Usage
+### 用法
 
 ```bash
 # Request Claude to think sequentially
 "Analyze [task] using sequential-thinking"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Algorithm design
@@ -22,7 +22,7 @@ Solve complex problems step-by-step through a dynamic, iterative thinking proces
 "Examine real-time notification system design using sequential-thinking"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Complex implementation strategy
@@ -55,7 +55,7 @@ cat src/complex_module.js
 - **Gradual Refinement** - Step-by-step refinement of solutions
 - **Flexibility** - Policy changes based on new information
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Complex system design
@@ -71,7 +71,7 @@ cat src/complex_module.js
 "Examine monorepo dependency management strategy using sequential-thinking. Include build time, deployment, and test execution"
 ```
 
-### Notes
+### 注意事项
 
 Sequential-thinking is ideal for complex problems that require deepening thought in stages. For simple questions or those with clear answers, use normal question format.
 

@@ -2,7 +2,7 @@
 
 Breaks big changes into small, meaningful commits with proper messages. Uses only standard git commands.
 
-### Usage
+### 用法
 
 ```bash
 /semantic-commit [options]
@@ -14,7 +14,7 @@ Breaks big changes into small, meaningful commits with proper messages. Uses onl
 - `--lang <language>`: Force language for commit messages (en, ja)
 - `--max-commits <number>`: Specify maximum number of commits (default: 10)
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Analyze current changes and commit in logical units
@@ -590,7 +590,7 @@ export default {
    sort | uniq -c | sort -nr
    ```
 
-#### Examples of Project Conventions
+#### 示例 of Project Conventions
 
 ##### Angular Style
 
@@ -844,7 +844,7 @@ When making commit messages, we follow this order:
 4. **Conventional Commits standard** (fallback)
    - Standard behavior when no settings found
 
-#### Examples of Convention Detection
+#### 示例 of Convention Detection
 
 **Automatic scope detection in Monorepo**:
 

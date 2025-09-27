@@ -1,8 +1,8 @@
-## Role Help
+## 角色 Help
 
 A selection guide and help system when you're unsure which role to use.
 
-### Usage
+### 用法
 
 ```bash
 /role-help                      # General role selection guide
@@ -10,7 +10,7 @@ A selection guide and help system when you're unsure which role to use.
 /role-help compare <Role 1>,<Role 2> # Compare roles
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # General guidance
@@ -251,7 +251,7 @@ performance: Specific speed and efficiency improvements
 For performance design of large-scale systems, use multi-role architect,performance
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Combined with situation description
@@ -268,7 +268,7 @@ cat problem-description.md
 "Which role is appropriate for JWT token expiration issues?"
 ```
 
-### Notes
+### 注意事项
 
 - For complex problems, combining multiple roles is more effective
 - For urgent matters, use single role for quick response

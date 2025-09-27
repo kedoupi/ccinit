@@ -1,15 +1,15 @@
-## PR List
+## PRList
 
 Displays a prioritized list of open PRs in the current repository.
 
-### Usage
+### 用法
 
 ```bash
 # Request from Claude
 "Show a prioritized list of open PRs"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Get repository information
@@ -57,7 +57,7 @@ Open PRs List (by Priority)
 - PRs containing DO NOT MERGE
 - Draft PRs with `test:`, `build:`, `perf:`
 
-### Notes
+### 注意事项
 
 - Requires GitHub CLI (`gh`)
 - Only displays PRs in open state (Drafts are excluded)

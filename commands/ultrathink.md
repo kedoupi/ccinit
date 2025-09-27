@@ -2,14 +2,14 @@
 
 Execute a step-by-step, structured thinking process for complex tasks and important decisions.
 
-### Usage
+### 用法
 
 ```bash
 # Request deep thinking from Claude
 "Analyze [task] using ultrathink"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Examine architecture design
@@ -22,7 +22,7 @@ Execute a step-by-step, structured thinking process for complex tasks and import
 "Analyze the causes of poor application performance and improvement methods using ultrathink"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Business decisions
@@ -47,7 +47,7 @@ cat src/legacy_code.js
 4. **Interactive Confirmation** - Confirm with users at important decision points
 5. **Evidence-Based Proposal** - Conclusions based on data and logic
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Resolve complex technical debt
@@ -60,6 +60,6 @@ cat src/legacy_code.js
 "Analyze migrating from PostgreSQL to DynamoDB using ultrathink. Consider cost, performance, and operational aspects"
 ```
 
-### Notes
+### 注意事项
 
 Ultrathink is ideal for tasks that require deep thinking over time. For simple questions or immediate answers, use the normal question format.

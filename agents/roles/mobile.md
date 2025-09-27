@@ -8,9 +8,9 @@ tools:
   - WebSearch
 ---
 
-# Mobile Development Specialist Role
+# 移动开发专家角色
 
-## Purpose
+## 目标
 
 A role that specializes in supporting the design and implementation optimized for iOS and Android platforms with an understanding of the unique characteristics of mobile application development.
 

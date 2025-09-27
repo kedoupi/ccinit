@@ -1,8 +1,8 @@
-## Tech Debt
+## 技术债务
 
-Finds technical debt in your project and creates a fix-it plan.
+发现项目中的技术债务并制定修复计划。
 
-### Usage
+### 用法
 
 ```bash
 # Check project structure for tech debt
@@ -10,7 +10,7 @@ ls -la
 "Find the technical debt in this project and make a plan to fix it"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Find TODO/FIXME comments
@@ -26,7 +26,7 @@ find . -type f -not -path "*/\.*" -not -path "*/node_modules/*" -exec wc -l {} +
 "Which files are too big? How should we split them up?"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Full tech debt analysis
@@ -51,7 +51,7 @@ find . -type d -name "src" -o -name "lib" -o -name "app" | head -10 | xargs ls -
 - When to do it"
 ```
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Auto-detect project type and analyze
@@ -79,7 +79,7 @@ find . -type f \( -name "*test*" -o -name "*spec*" \) | wc -l && find . -type f 
 "Where are tests missing? What's our testing strategy?"
 ```
 
-### Notes
+### 注意事项
 
 - Auto-detects your language and framework
 - Splits debt into "fix now" vs "fix later"

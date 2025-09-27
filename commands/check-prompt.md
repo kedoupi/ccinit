@@ -1,8 +1,8 @@
-## Check Prompt
+## 检查 Prompt
 
 A comprehensive collection of best practices for evaluating and improving the quality of prompts for AI Agents. It systematizes knowledge gained from actual prompt improvement processes, covering all important aspects such as ambiguity elimination, information integration, enforcement enhancement, tracking systems, and continuous improvement.
 
-### Usage
+### 用法
 
 ```bash
 # Check the quality of a prompt file
@@ -19,7 +19,7 @@ cat your-prompt.md
 - `--fix`: Automatically suggest fixes for detected issues
 - `--deep`: Deep analysis mode (focus on ambiguity, information dispersion, and enforcement)
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Evaluate overall prompt quality
@@ -42,7 +42,7 @@ cat devin/playbooks/code-review.md
 
 ---
 
-## Core Design Principles
+## 核心设计原则
 
 ### Principle 1: Completely Eliminate Room for Interpretation
 
@@ -431,7 +431,7 @@ Actual improvement effects:
 
 ---
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Quality check combined with prompt file
@@ -450,7 +450,7 @@ cat execution-errors.log
 "Identify potential prompt issues that may have caused this error"
 ```
 
-### Notes
+### 注意事项
 
 - **Prerequisite**: Prompt files are recommended to be written in Markdown format
 - **Limitation**: For large-scale prompts (10,000 lines or more), it is recommended to analyze in parts

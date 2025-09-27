@@ -1,15 +1,15 @@
-## Role Debate
+## 角色 Debate
 
 A command that allows roles with different expertise to discuss and examine trade-offs to derive optimal solutions.
 
-### Usage
+### 用法
 
 ```bash
 /role-debate <Role 1>,<Role 2> [Topic]
 /role-debate <Role 1>,<Role 2>,<Role 3> [Topic]
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Security vs Performance trade-off
@@ -545,7 +545,7 @@ Success Metrics & Measurement Methods:
 - [ ] Long-term perspective included
 - [ ] Measurable success metrics set
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Debate based on design documents
@@ -563,7 +563,7 @@ cat performance-issues.md
 "Discuss unified UI strategy for iOS, Android, and Web"
 ```
 
-### Notes
+### 注意事项
 
 - Debates may take time (longer for complex topics)
 - With 3+ roles, discussions may diverge

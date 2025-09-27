@@ -1,8 +1,8 @@
-## Commit Message
+## 提交 Message
 
 Generates commit messages from staged changes (git diff --staged). This command only creates messages and copies them to your clipboard—it doesn't run any git commands.
 
-### Usage
+### 用法
 
 ```bash
 /commit-message [options]
@@ -14,7 +14,7 @@ Generates commit messages from staged changes (git diff --staged). This command 
 - `--lang <language>` : Set language explicitly (en, ja)
 - `--breaking` : Include breaking change detection
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Generate message from staged changes (language auto-detected)
@@ -341,7 +341,7 @@ git add -A
 "Mark appropriately if there are breaking changes"
 ```
 
-### Important Notes
+### 重要说明
 
 - **Prerequisite**: Changes must be staged with `git add` beforehand
 - **Limitation**: Unstaged changes are not analyzed

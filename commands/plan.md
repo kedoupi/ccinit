@@ -2,14 +2,14 @@
 
 Helps you plan before coding. Creates detailed strategies to make development smoother.
 
-### Usage
+### 用法
 
 ```bash
 # Request Plan Mode from Claude
 "Create an implementation plan for [implementation content]"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Implementation plan for new feature
@@ -22,7 +22,7 @@ Helps you plan before coding. Creates detailed strategies to make development sm
 "Create a refactoring plan for legacy code"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Complex feature implementation
@@ -60,7 +60,7 @@ Helps you plan before coding. Creates detailed strategies to make development sm
 - You can request changes anytime
 - TodoWrite tracking starts after you approve
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Complex system implementation
@@ -99,7 +99,7 @@ Helps you plan before coding. Creates detailed strategies to make development sm
 - **Quality Checks**: Testing and verification plan
 - **Your Approval**: Show plan and wait for your OK
 
-### Notes
+### 注意事项
 
 **When to Use This**
 

@@ -1,8 +1,8 @@
-## Error Fix
+## 错误修复
 
-Analyzes error messages to find root causes and suggest proven fixes.
+分析错误信息以找到根本原因并提供经过验证的修复方案。
 
-### Usage
+### 用法
 
 ```bash
 /fix-error [options]
@@ -15,7 +15,7 @@ Analyzes error messages to find root causes and suggest proven fixes.
 - `--preventive`: Focus on preventing future occurrences
 - `--quick`: Quick fixes only
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Standard error analysis
@@ -39,7 +39,7 @@ cargo test 2>&1
 "Fix this and help me prevent it next time"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Analyze error logs
@@ -228,7 +228,7 @@ Must check (high):
 - Symbolic links
 ```
 
-### Notes
+### 注意事项
 
 - **Absolutely prohibited**: Making judgments based only on part of an error message, applying Stack Overflow solutions without verification
 - **Exception conditions**: Temporary workarounds are only allowed under these 3 conditions:

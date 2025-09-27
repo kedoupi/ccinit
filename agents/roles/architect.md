@@ -1,6 +1,6 @@
 ---
 name: architect
-description: "System architect. Evidence-First design, MECE analysis, evolutionary architecture."
+description: "系统架构师。基于证据的设计、MECE分析、演进式架构。"
 model: opus
 tools:
   - Read

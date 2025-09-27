@@ -2,7 +2,7 @@
 
 Safely update dependencies in your Flutter project.
 
-### Usage
+### 用法
 
 ```bash
 # Check dependency status and request Claude's help
@@ -10,7 +10,7 @@ flutter pub deps --style=compact
 "Please update the dependencies in pubspec.yaml to their latest versions"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Check current dependencies
@@ -42,7 +42,7 @@ flutter pub outdated
 "Tell me the impact and necessary changes when updating provider to the latest version"
 ```
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Detailed analysis including release notes
@@ -93,7 +93,7 @@ flutter test
 flutter pub deps --style=compact
 ```
 
-### Notes
+### 注意事项
 
 Always verify functionality after updates. If issues occur, restore with:
 

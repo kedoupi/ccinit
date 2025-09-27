@@ -2,14 +2,14 @@
 
 Displays a prioritized list of open issues in the current repository.
 
-### Usage
+### 用法
 
 ```bash
 # Request from Claude
 "Show a prioritized list of open issues"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Get repository information
@@ -69,7 +69,7 @@ gh issue list --state open --label "bug" --json number,title,author,createdAt,la
 gh issue list --state open --label "bug,high-priority" --json number,title,author,createdAt,labels,comments --limit 30
 ```
 
-### Notes
+### 注意事项
 
 - Requires GitHub CLI (`gh`)
 - Only displays issues in open state

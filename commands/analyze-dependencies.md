@@ -1,8 +1,8 @@
-## Dependency Analysis
+## 依赖分析
 
 Analyzes your project's dependencies and checks architecture health.
 
-### Usage
+### 用法
 
 ```bash
 /dependency-analysis [options]
@@ -15,7 +15,7 @@ Analyzes your project's dependencies and checks architecture health.
 - `--depth <number>`: Specify analysis depth (default: 3)
 - `--focus <path>`: Focus on specific module/directory
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Analyze dependencies for entire project
@@ -125,7 +125,7 @@ ignore:
 - `nx`: Manages monorepo dependencies
 - `plato`: Analyzes complexity and dependencies together
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Check dependencies with package.json
@@ -144,7 +144,7 @@ cat docs/architecture.md
 "Does our implementation match the architecture docs?"
 ```
 
-### Notes
+### 注意事项
 
 - **Run from**: Project root directory
 - **Be patient**: Large projects take time to analyze

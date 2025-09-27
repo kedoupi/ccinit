@@ -1,8 +1,8 @@
-## PR Feedback
+## PR反馈
 
 Efficiently handle Pull Request review comments and achieve root cause resolution using a 3-stage error analysis approach.
 
-### Usage
+### 用法
 
 ```bash
 # Retrieve and analyze review comments
@@ -18,7 +18,7 @@ npm test && npm run lint
 "Fixes are complete - please check regression tests and code quality"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Classify comments
@@ -135,7 +135,7 @@ Considered alternatives: [Options and decision rationale]
 Adopted solution benefits: [Advantages]
 ```
 
-### Notes
+### 注意事项
 
 - **Priority adherence**: Address in order of Critical → High → Medium → Low
 - **Test first**: Confirm regression tests before making fixes

@@ -1,8 +1,8 @@
-## Task
+## 任务
 
 Launches a smart agent to handle complex searches and investigations. Great for large-scale work without eating up context.
 
-### Usage
+### 用法
 
 ```bash
 # Request Task from Claude
@@ -29,7 +29,7 @@ Launches a smart agent to handle complex searches and investigations. Great for 
 - Verifies from different angles
 - Fills in missing pieces
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Complex codebase investigation
@@ -42,7 +42,7 @@ Launches a smart agent to handle complex searches and investigations. Great for 
 "Investigate the latest AI technology trends using Task"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Complex problem analysis
@@ -99,7 +99,7 @@ Need to gather info?
 - Things needing back-and-forth discussion
 - Design decisions (use plan or thinking commands instead)
 
-### Detailed Examples by Category
+### 详细示例 by Category
 
 #### System Analysis and Investigation
 
@@ -200,7 +200,7 @@ Need to gather info?
 - **Alternative proposals**: Suggestion of alternative investigation methods under constraints
 - **Stepwise execution**: Division of large-scale tasks for execution
 
-### Notes
+### 注意事项
 
 - Task is optimal for complex, autonomous investigation and analysis tasks
 - For simple questions or when immediate answers are needed, use normal question format

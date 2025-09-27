@@ -1,8 +1,8 @@
-## Code Explain
+## 代码解释
 
 Explains how code works in detail.
 
-### Usage
+### 用法
 
 ```bash
 # Show a file and ask for explanation
@@ -10,7 +10,7 @@ cat <file>
 "Explain how this code works"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Understand Rust ownership
@@ -26,7 +26,7 @@ cat factory.rs
 "What design pattern is this? What are the benefits?"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Beginner-friendly explanation
@@ -46,7 +46,7 @@ cat auth_handler.go
 "What security issues do you see?"
 ```
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Complex logic breakdown

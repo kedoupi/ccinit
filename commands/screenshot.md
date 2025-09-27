@@ -2,7 +2,7 @@
 
 Capture screenshots on macOS and analyze the images.
 
-### Usage
+### 用法
 
 ```bash
 /screenshot [options]
@@ -15,7 +15,7 @@ Capture screenshots on macOS and analyze the images.
 - `--full`: Capture the entire screen
 - `--crop`: Select a region to capture
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Capture and analyze a window
@@ -31,7 +31,7 @@ Capture screenshots on macOS and analyze the images.
 "Analyze the overall screen composition"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # No specific problem - situation analysis
@@ -59,7 +59,7 @@ Capture screenshots on macOS and analyze the images.
 "Analyze trends visible in this graph"
 ```
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Analysis from multiple perspectives
@@ -82,13 +82,13 @@ Capture screenshots on macOS and analyze the images.
 "Evaluate whether the selected button design harmonizes with other elements"
 ```
 
-### Prohibited Items
+### 禁止事项
 
 - **Prohibited to say "captured" when no screenshot was taken**
 - **Prohibited to attempt analysis of non-existent image files**
 - **The `/screenshot` command does not actually capture screenshots**
 
-### Notes
+### 注意事项
 
 - If no option is specified, please present the following choices:
 

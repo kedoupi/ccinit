@@ -1,10 +1,10 @@
-## Spec
+## 规范
 
 **"Give structure before writing code"** - Fully compliant with Kiro's spec-driven development
 
 Unlike traditional code generation tools, it realizes Kiro's specification-driven development focused on bringing structure to development chaos. From minimal requirement input, it progressively develops from detailed product manager-level specifications to implementable designs, ensuring consistent quality from **prototype to production**.
 
-### Usage
+### 用法
 
 ```bash
 # Request Spec Mode from Claude (minimal requirement input)
@@ -49,7 +49,7 @@ Unlike traditional code generation tools, it realizes Kiro's specification-drive
 → Structured approach through spec-driven development
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Create spec for new feature (minimal input)
@@ -69,7 +69,7 @@ Unlike traditional code generation tools, it realizes Kiro's specification-drive
 - Security-focused"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Complex feature spec
@@ -105,7 +105,7 @@ Unlike traditional code generation tools, it realizes Kiro's specification-drive
 - Presents and discusses technical options
 - Explains trade-offs and confirms decisions
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Complex system feature
@@ -450,7 +450,7 @@ THE SYSTEM SHALL [corresponding behavior]
 - Automatic application of scalable architecture
 - Integration of continuous quality management
 
-### Notes
+### 注意事项
 
 **Scope of Application**
 

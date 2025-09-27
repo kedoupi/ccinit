@@ -1,8 +1,8 @@
-## Refactor
+## 代码重构
 
-Cleans up code safely step-by-step and checks SOLID principles.
+安全地逐步清理代码并检查SOLID原则。
 
-### Usage
+### 用法
 
 ```bash
 # Find complex code to refactor
@@ -18,7 +18,7 @@ grep -r "class.*Service" . --include="*.js" | head -10
 "Do these classes have just one job?"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Find long methods

@@ -1,8 +1,8 @@
-## Role
+## 角色
 
 Switch to a specific role to perform specialized analysis or work.
 
-### Usage
+### 用法
 
 ```bash
 /role <role_name> [--agent|-a]
@@ -29,7 +29,7 @@ Switch to a specific role to perform specialized analysis or work.
 - `qa`: Test engineer (test coverage, E2E/integration/unit strategy, automation proposals)
 - `mobile`: Mobile development expert (iOS HIG, Android Material Design, cross-platform strategy)
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Switch to security audit mode (normal)
@@ -65,7 +65,7 @@ Switch to a specific role to perform specialized analysis or work.
 "Return to normal Claude"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Security-specific analysis
@@ -83,7 +83,7 @@ ls -la src/
 "Propose the optimal test strategy for this project"
 ```
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Analysis with multiple roles
@@ -266,7 +266,7 @@ Combining roles with different discussion characteristics enables balanced analy
 - `/multi-role <Role 1>,<Role 2>`: Simultaneous analysis by multiple roles
 - `/role-debate <Role 1>,<Role 2>`: Discussion between roles
 
-### Usage Examples
+### 用法 Examples
 
 #### Automatic Role Proposal
 

@@ -1,10 +1,10 @@
-## PR Auto Update
+## PR自动更新
 
-## Overview
+## 概述
 
 A command that automatically updates Pull Request descriptions and labels. Analyzes Git changes to generate and set appropriate descriptions and labels.
 
-## Usage
+## 用法
 
 ```bash
 /pr-auto-update [options] [PR number]
@@ -18,7 +18,7 @@ A command that automatically updates Pull Request descriptions and labels. Analy
 - `--dry-run`: Show generated content without making actual updates
 - `--lang <language>`: Specify language (ja, en)
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Auto-update PR for current branch
@@ -34,7 +34,7 @@ A command that automatically updates Pull Request descriptions and labels. Analy
 /pr-auto-update --dry-run
 ```
 
-## Feature Details
+## 功能详情
 
 ### 1. PR Auto Detection
 

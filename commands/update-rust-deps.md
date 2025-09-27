@@ -2,7 +2,7 @@
 
 Safely update dependencies in your Rust project.
 
-### Usage
+### 用法
 
 ```bash
 # Check dependency status and request Claude's help
@@ -10,7 +10,7 @@ cargo tree
 "Please update the dependencies in Cargo.toml to their latest versions"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Check current dependencies
@@ -42,7 +42,7 @@ cargo tree
 "Tell me the impact and necessary changes when updating tokio to the latest version"
 ```
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Detailed analysis including release notes
@@ -95,7 +95,7 @@ cargo test
 cargo clippy
 ```
 
-### Notes
+### 注意事项
 
 Always verify functionality after updates. If issues occur, restore with:
 

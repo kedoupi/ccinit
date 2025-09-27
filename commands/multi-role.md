@@ -1,8 +1,8 @@
-## Multi Role
+## 多 Role
 
 A command that analyzes the same target in parallel with multiple roles and generates an integrated report.
 
-### Usage
+### 用法
 
 ```bash
 /multi-role <role1>,<role2> [--agent|-a] [analysis_target]
@@ -21,7 +21,7 @@ A command that analyzes the same target in parallel with multiple roles and gene
 - `--agent` or `-a`: Execute each role as a sub-agent in parallel (recommended for large-scale analysis)
   - When using this option, if role descriptions include proactive delegation phrases (like "use PROACTIVELY"), more aggressive automatic delegation becomes enabled
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Dual analysis of security and performance (normal)
@@ -201,7 +201,7 @@ Implementation Period: 3-4 weeks
 "Comprehensive mobile app diagnosis"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Combine with file analysis
@@ -282,7 +282,7 @@ Role 3 ─┘
 | 3 roles        | 3-5 minutes     | 1-2 minutes      | 60%           |
 | 4 roles        | 5-8 minutes     | 2-3 minutes      | 65%           |
 
-### Notes
+### 注意事项
 
 - Executing 3 or more roles simultaneously results in longer output
 - Complex analyses may take longer to execute

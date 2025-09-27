@@ -1,8 +1,8 @@
-## Smart Review
+## 智能审查
 
-A command that analyzes the current situation and automatically suggests the optimal role and approach.
+分析当前情况并自动建议最佳角色和方法的命令。
 
-### Usage
+### 用法
 
 ```bash
 /smart-review                    # Analyze current directory
@@ -101,7 +101,7 @@ $ /smart-review architecture-design.md
 - When significant architectural changes are involved
 - When both mobile and web are affected
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Analyze current directory
@@ -148,7 +148,7 @@ $ /smart-review "How to set JWT expiration time"
 → "Reason: Balance between security, performance, and UX is important"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Analysis combined with file content
@@ -166,7 +166,7 @@ npm run build 2>&1 | tee build-error.log
 "Discuss whether to choose React Native or Progressive Web App"
 ```
 
-### Notes
+### 注意事项
 
 - Suggestions are for reference only. The final decision is up to the user
 - Debate format (role-debate) is recommended for complex issues

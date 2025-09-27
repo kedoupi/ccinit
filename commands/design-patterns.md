@@ -1,8 +1,8 @@
-## Design Patterns
+## 设计模式
 
 Suggests design patterns for your code and checks if it follows SOLID principles.
 
-### Usage
+### 用法
 
 ```bash
 /design-patterns [analysis_target] [options]
@@ -16,7 +16,7 @@ Suggests design patterns for your code and checks if it follows SOLID principles
 - `--solid`: Check compliance with SOLID principles
 - `--anti-patterns`: Detect anti-patterns
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Analyze patterns for entire project

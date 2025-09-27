@@ -1,8 +1,8 @@
-## Check Fact
+## 检查 Fact
 
 Verifies if a statement is true by checking your project's code and documentation.
 
-### Usage
+### 用法
 
 ```bash
 # Basic usage
@@ -37,7 +37,7 @@ Verifies if a statement is true by checking your project's code and documentatio
 ### Report Format
 
 ```
-## Fact Check Results
+## 事实检查结果
 
 ### What You Asked
 "[Your statement]"
@@ -56,7 +56,7 @@ Verifies if a statement is true by checking your project's code and documentatio
 [If unknown, here's what I'd need to check]
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Check the tech stack
@@ -72,7 +72,7 @@ Verifies if a statement is true by checking your project's code and documentatio
 /check-fact "Authentication tokens are encrypted and stored in secure storage"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Check dependencies

@@ -1,8 +1,8 @@
-## PR Merge
+## PRMerge
 
 Automatically merge Pull Requests after comprehensive quality verification and approval.
 
-### Usage
+### 用法
 
 ```bash
 # Auto-merge after quality gates pass
@@ -18,7 +18,7 @@ Automatically merge Pull Requests after comprehensive quality verification and a
 "Check if PR is ready for merge without actually merging"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Complete quality verification and merge
@@ -271,7 +271,7 @@ gh pr view $PR_NUMBER --json mergeableState,statusCheckRollup
 3. **Audit Trail**: Log all merge actions with user attribution
 4. **Rollback Plan**: Document merge reversal procedures if needed
 
-### Notes
+### 注意事项
 
 - **Requires GitHub CLI**: `gh` must be authenticated
 - **Branch Permissions**: User must have write access to target branch

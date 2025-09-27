@@ -1,15 +1,15 @@
-## Gemini Web Search
+## Gemini网页搜索
 
 Execute web searches via Gemini CLI to obtain the latest information.
 
-### Usage
+### 用法
 
 ```bash
 # Web search via Gemini CLI (required)
 gemini --prompt "WebSearch: <search_query>"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Using Gemini CLI
@@ -17,7 +17,7 @@ gemini --prompt "WebSearch: React 19 new features"
 gemini --prompt "WebSearch: TypeError Cannot read property of undefined solution"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Document search and summarization
@@ -34,7 +34,7 @@ gemini --prompt "WebSearch: Rust vs Go performance benchmark 2024"
 "Summarize the performance differences from the search results"
 ```
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Information gathering from multiple sources
@@ -54,12 +54,12 @@ gemini --prompt "WebSearch: CVE-2024 Node.js vulnerabilities"
 "Summarize the impact and countermeasures of found vulnerabilities"
 ```
 
-### Prohibited Items
+### 禁止事项
 
 - **Prohibited to use Claude's built-in WebSearch tool**
 - When web search is needed, always use `gemini --prompt "WebSearch: ..."`
 
-### Important Notes
+### 重要说明
 
 - **When Gemini CLI is available, always use `gemini --prompt "WebSearch: ..."`**
 - Web search results are not always the latest

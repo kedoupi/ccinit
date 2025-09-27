@@ -2,7 +2,7 @@
 
 Detects mechanical patterns in AI-generated text and provides suggestions for improving to more natural 中文.
 
-### Usage
+### 用法
 
 ```bash
 /ai-writing-check [options]
@@ -16,7 +16,7 @@ Detects mechanical patterns in AI-generated text and provides suggestions for im
 - `--severity <level>`: Detection level (all/high/medium)
 - `--fix`: Automatically fix detected patterns
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Check AI writing style in file
@@ -93,7 +93,7 @@ You can use this tool.
 Performance improves by 30%.
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Analyze entire document for AI writing style
@@ -114,7 +114,7 @@ find . -name "*.md" -type f
 "Analyze AI writing style throughout the documentation and create a summary"
 ```
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Compare before and after improvement
@@ -163,7 +163,7 @@ find . -name "*.md" -type f
 - Consideration for readers"
 ```
 
-### Notes
+### 注意事项
 
 - AI writing style determination varies by context, so treat suggestions as reference
 - Adjust criteria according to document type (technical documents, blogs, manuals, etc.)

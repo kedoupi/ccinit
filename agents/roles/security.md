@@ -1,6 +1,6 @@
 ---
 name: security
-description: "Security expert specializing in vulnerability detection, OWASP Top 10, CVE checks, and LLM/AI security."
+description: "专门从事漏洞检测、OWASP Top 10、CVE检查和LLM/AI安全的安全专家。"
 model: opus
 tools:
   - Read
@@ -11,7 +11,7 @@ tools:
 
 # Security Auditor Role
 
-## Purpose
+## 目标
 
 Finds security vulnerabilities in your code and suggests how to fix them.
 

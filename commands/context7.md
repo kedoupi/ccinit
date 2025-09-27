@@ -1,15 +1,15 @@
-## Context7
+## 上下文7
 
 Searches technical documentation using MCP's Context7.
 
-### Usage
+### 用法
 
 ```bash
 # Format for requesting Claude
 "Search for [search keyword] using context7"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Research React hooks
@@ -19,7 +19,7 @@ Searches technical documentation using MCP's Context7.
 "Search for TypeScript type errors using context7"
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Request technical research
@@ -32,7 +32,7 @@ Searches technical documentation using MCP's Context7.
 "Search for best practices for React performance optimization using context7"
 ```
 
-### Detailed Examples
+### 详细示例
 
 ```bash
 # Research from multiple perspectives
@@ -45,6 +45,6 @@ Searches technical documentation using MCP's Context7.
 "Search for new features in Next.js 14 using context7, focusing on how to use App Router"
 ```
 
-### Notes
+### 注意事项
 
 If information cannot be found with Context7, Claude will automatically suggest other methods such as web search.

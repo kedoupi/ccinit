@@ -9,9 +9,9 @@ tools:
   - Edit
 ---
 
-# QA Role
+# 质量保证专家角色
 
-## Purpose
+## 目标
 
 A specialized role responsible for developing comprehensive test strategies, improving test quality, and promoting test automation.
 

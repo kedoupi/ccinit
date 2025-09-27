@@ -1,15 +1,15 @@
-## GitHub CI Monitoring
+## GitHub CI监控
 
 Monitors GitHub Actions CI status and tracks until completion.
 
-### Usage
+### 用法
 
 ```bash
 # Check CI status
 gh pr checks
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Check CI after creating PR
@@ -17,7 +17,7 @@ gh pr create --title "Add new feature" --body "Description"
 gh pr checks
 ```
 
-### Collaboration with Claude
+### 与 Claude 协作
 
 ```bash
 # Flow from CI check to correction
@@ -46,7 +46,7 @@ All checks were successful
 -  Visual Test (pull_request)                                                  https://github.com/user/repo/actions/runs/123456789
 ```
 
-### Notes
+### 注意事项
 
 - Check details when failed
 - Wait for all checks to complete before merging

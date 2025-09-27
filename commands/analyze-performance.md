@@ -1,8 +1,8 @@
-## Analyze Performance
+## 性能分析
 
-Finds performance bottlenecks and suggests fixes based on technical debt analysis.
+基于技术债务分析发现性能瓶颈并提供修复建议。
 
-### Usage
+### 用法
 
 ```bash
 # Find performance issues comprehensively
@@ -18,7 +18,7 @@ grep -r "addEventListener\|setInterval" . --include="*.js" | grep -v "removeEven
 "Where might we have memory leaks and how do we fix them?"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Check bundle size and load time

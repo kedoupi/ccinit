@@ -1,8 +1,8 @@
-## PR Review
+## PR审查
 
-Ensure code quality and architectural soundness through systematic Pull Request reviews.
+通过系统化的Pull Request审查确保代码质量和架构健全性。
 
-### Usage
+### 用法
 
 ```bash
 # Comprehensive PR review
@@ -18,7 +18,7 @@ gh pr checkout 123 && find . -name "*.js" | head -10
 "Evaluate the architecture from the perspectives of layer separation, dependencies, and SOLID principles"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # Quantitative code quality assessment
@@ -134,7 +134,7 @@ The domain layer directly depends on the infrastructure layer.
 Please introduce an interface following the dependency inversion principle.
 ```
 
-### Notes
+### 注意事项
 
 - **Constructive tone**: Collaborative rather than aggressive communication
 - **Specific suggestions**: Provide solutions along with pointing out problems

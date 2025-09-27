@@ -1,8 +1,8 @@
-## Update Doc String
+## 更新 Doc String
 
 Systematically manage multilingual docstrings/comments and maintain high-quality documentation.
 
-### Usage
+### 用法
 
 ```bash
 # Run with automatic language detection
@@ -22,7 +22,7 @@ Systematically manage multilingual docstrings/comments and maintain high-quality
 - `--style <style>` : Specify documentation style (has language-specific defaults)
 - `--marker <true|false>` : Whether to add Claude markers (default: true)
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # 1. Analyze target files (programming language is auto-detected)
@@ -212,7 +212,7 @@ languages:
 - ✅ **Exceptions**: Explain errors and exceptions (when applicable)
 - ✅ **Accuracy**: Analyze implementation and only include fact-based descriptions
 
-### Notes
+### 注意事项
 
 **🔴 Strict Prohibitions**:
 

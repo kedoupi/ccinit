@@ -1,8 +1,8 @@
-## PR Create
+## 创建PR
 
-Creates Pull Requests automatically by analyzing your Git changes for a smoother workflow.
+通过分析Git变更自动创建Pull Request，让工作流更顺畅。
 
-### Usage
+### 用法
 
 ```bash
 # Auto-create PR from your changes
@@ -18,7 +18,7 @@ gh pr ready
 "Switch to Ready for Review after checking quality"
 ```
 
-### Basic Examples
+### 基础示例
 
 ```bash
 # 1. Create branch and commit
@@ -227,7 +227,7 @@ git commit -m "fix: Address review feedback"
 git push
 ```
 
-### Notes
+### 注意事项
 
 #### Importance of HTML Comment Preservation
 

@@ -2,21 +2,15 @@
 """
 UserPromptSubmit Hook - Append UltraThink
 为用户提示添加 UltraThink 机制，增强思考深度
-
-This hook automatically appends thinking enhancement prompts to user inputs
-to encourage deeper analysis and more thorough responses from Claude.
 """
 
 import sys
 import json
 import os
-from pathlib import Path
 
-def get_ultrathink_prompt(language: str = "zh") -> str:
-    """根据语言返回适当的 UltraThink 提示"""
-
-    if language == "zh":
-        return """
+def get_ultrathink_prompt() -> str:
+    """返回中文 UltraThink 提示"""
+    return """
 
 <ultrathink>
 在回答之前，请深入思考以下几个方面：
@@ -28,21 +22,6 @@ def get_ultrathink_prompt(language: str = "zh") -> str:
 5. **替代方案**：还有其他可能的解决方案吗？
 
 请基于这些思考给出深度的回答。
-</ultrathink>"""
-
-    else:  # Default to English
-        return """
-
-<ultrathink>
-Before answering, please think deeply about these aspects:
-
-1. **Problem Essence**: What is the core of this problem? Are there implicit requirements?
-2. **Multi-angle Analysis**: Consider from technical, business, UX, and other perspectives
-3. **Potential Risks**: What problems or risk points might exist?
-4. **Best Practices**: What are the industry best practices?
-5. **Alternative Solutions**: Are there other possible solutions?
-
-Please provide an in-depth answer based on these considerations.
 </ultrathink>"""
 
 def main():
@@ -71,9 +50,6 @@ def main():
         if not user_prompt.strip():
             sys.exit(0)
 
-        # 检测语言设置
-        language = os.environ.get('CLAUDE_LANGUAGE', 'zh')
-
         # 检查是否已经包含 ultrathink 标签
         if '<ultrathink>' in user_prompt.lower():
             # 已经包含，不重复添加
@@ -88,7 +64,7 @@ def main():
             sys.exit(0)
 
         # 添加 UltraThink 提示
-        ultrathink_prompt = get_ultrathink_prompt(language)
+        ultrathink_prompt = get_ultrathink_prompt()
 
         # 更新用户提示
         enhanced_prompt = user_prompt + ultrathink_prompt

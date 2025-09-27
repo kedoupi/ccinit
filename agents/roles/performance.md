@@ -9,9 +9,9 @@ tools:
   - Glob
 ---
 
-# Performance Specialist Role
+# 性能专家角色
 
-## Purpose
+## 目标
 
 Optimizes system and app performance, from finding bottlenecks to implementing fixes.
 
