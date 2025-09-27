@@ -1,18 +1,31 @@
-## Design Patterns
+---
+name: design-patterns
+description: "分析设计模式和 SOLID 原则，推荐重构方案"
+---
 
-### 核心作用
-分析代码中现有设计模式与 SOLID 原则的落实情况，推荐合适的模式或重构方案，并提醒常见反模式和技术债。
+# Design Patterns 命令
 
-### 适用场景
-- 评估项目是否符合既定架构、分层规范
-- 规划重构/模块化拆分，想借助经典模式提升结构
-- 检查是否存在 God Object、循环依赖、职责混乱等问题
+分析代码设计模式和架构原则：
 
-### 快速用法
-```bash
-/design-patterns                          # 综合建议（默认 recommend）
-/design-patterns --analyze                # 仅分析已使用模式
-/design-patterns src/services/user.ts     # 针对特定文件
+**分析内容**：
+- 现有设计模式识别
+- SOLID 原则遵循情况
+- 反模式和 Code Smell 检测
+- 适合的模式推荐
+
+**评估维度**：
+- 单一职责原则 (SRP)
+- 开闭原则 (OCP)
+- 里氏替换原则 (LSP)
+- 接口隔离原则 (ISP)
+- 依赖倒置原则 (DIP)
+
+**适用场景**：
+- 架构评估和代码审查
+- 重构规划和模块化
+- 技术债识别和解决
+
+支持全局分析、特定文件检查等多种模式。
 /design-patterns --solid                  # 检查 SOLID 违规
 /design-patterns --anti-patterns          # 寻找反模式
 ```
