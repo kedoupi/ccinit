@@ -109,15 +109,24 @@ backup_existing() {
     local backup_name=".claude_backup_$(date +%Y%m%d_%H%M%S)"
     local backup_path="$HOME/$backup_name"
 
-    read -p "是否要备份现有的 .claude 目录？(y/n): " -n 1 -r
-    echo
+    # 检查是否通过管道执行（如 curl | bash）
+    if [[ -t 0 ]]; then
+        # 标准输入可用，可以交互
+        read -p "是否要备份现有的 .claude 目录？(y/n): " -n 1 -r
+        echo
 
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            mv "$CLAUDE_DIR" "$backup_path"
+            print_success "备份创建成功：$backup_path"
+        else
+            rm -rf "$CLAUDE_DIR"
+            print_info "已移除现有的 .claude 目录"
+        fi
+    else
+        # 非交互模式，默认备份
+        print_info "非交互模式：自动备份现有目录"
         mv "$CLAUDE_DIR" "$backup_path"
         print_success "备份创建成功：$backup_path"
-    else
-        rm -rf "$CLAUDE_DIR"
-        print_info "已移除现有的 .claude 目录"
     fi
 }
 
