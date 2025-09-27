@@ -90,12 +90,32 @@ description: "命令描述"
 # 命令实现内容
 ```
 
-**命令分类**：
-- 项目管理类：`/plan`, `/spec`, `/task`, `/show-plan`
-- 代码质量类：`/refactor`, `/smart-review`, `/fix-error`, `/tech-debt`
-- Git 工作流类：`/pr-create`, `/pr-review`, `/semantic-commit`
-- 分析检测类：`/analyze-performance`, `/analyze-dependencies`
-- AI 增强类：`/ultrathink`, `/multi-role`, `/search-gemini`
+**命令分类**（共27个命令）：
+
+**核心工作流命令**（6个）：
+- 项目管理：`/plan`, `/spec`, `/task`, `/show-plan`
+- 任务验证：`/check-fact`, `/check-prompt`
+
+**代码质量命令**（6个）：
+- 代码改进：`/refactor`, `/fix-error`, `/design-patterns`
+- 代码分析：`/analyze-performance`, `/analyze-dependencies`, `/tech-debt`
+- 代码审查：`/smart-review`, `/explain-code`
+
+**专家角色命令**（4个）：
+- 角色系统：`/role`, `/multi-role`, `/role-debate`, `/role-help`
+
+**Git/PR 工作流**（4个）：
+- PR 管理：`/pr-create`, `/pr-review`, `/pr-merge`
+- 提交管理：`/commit-message`
+
+**项目维护命令**（4个）：
+- 文档维护：`/update-doc`
+- 依赖维护：`/update-deps`
+- 代码规范：`/style-ai-writting`
+
+**AI 增强命令**（3个）：
+- 深度思考：`/think`
+- 网页搜索：`/search-gemini`
 
 ### 角色系统设计
 

@@ -1,6 +1,6 @@
 ## 提交 Message
 
-Generates commit messages from staged changes (git diff --staged). This command only creates messages and copies them to your clipboard—it doesn't run any git commands.
+智能分析暂存的变更内容生成提交信息，并提供交互式确认直接提交代码。
 
 ### 用法
 
@@ -10,23 +10,27 @@ Generates commit messages from staged changes (git diff --staged). This command 
 
 ### Options
 
-- `--format <format>` : Choose message format (conventional, gitmoji, angular)
-- `--lang <language>` : Set language explicitly (en, ja)
-- `--breaking` : Include breaking change detection
+- `--format <format>` : 选择消息格式 (conventional, gitmoji, angular)
+- `--lang <language>` : 明确设置语言 (en, zh)
+- `--breaking` : 包含破坏性更改检测
+- `--auto` : 自动提交（跳过确认步骤）
 
 ### 基础示例
 
 ```bash
-# Generate message from staged changes (language auto-detected)
-# The top suggestion is automatically copied to your clipboard
+# 从暂存变更生成消息（自动检测语言）
+# 推荐最佳消息并询问是否提交
 /commit-message
 
-# Specify language explicitly
-/commit-message --lang ja
+# 明确指定语言
+/commit-message --lang zh
 /commit-message --lang en
 
-# Include breaking change detection
+# 包含破坏性更改检测
 /commit-message --breaking
+
+# 自动提交（跳过确认）
+/commit-message --auto
 ```
 
 ### Prerequisites
@@ -39,14 +43,27 @@ $ /commit-message
 No staged changes found. Please run git add first.
 ```
 
-### Automatic Clipboard Feature
+### 交互式提交功能
 
-The top suggestion gets copied to your clipboard as a complete command: `git commit -m "message"`. Just paste and run it in your terminal.
+推荐最佳提交信息后，会询问是否立即提交：
 
-**Implementation Notes**:
+```
+✨ 推荐的提交信息:
+feat: 实现JWT身份验证系统
 
-- Run `pbcopy` in a separate process from the message output
-- Use `printf` instead of `echo` to avoid unwanted newlines
+📋 备选方案:
+1. feat: 添加基于JWT的用户认证
+2. fix: 修复认证中间件的令牌验证错误
+3. refactor: 将认证逻辑提取到独立模块
+
+❓ 是否使用推荐的提交信息提交代码？ (Y/n):
+```
+
+**交互选项**:
+- `Y` 或 `y` 或直接回车: 使用推荐信息立即提交
+- `1`, `2`, `3`: 使用对应的备选方案提交
+- `n` 或 `N`: 取消提交，仅复制到剪贴板
+- `e` 或 `edit`: 进入编辑模式自定义提交信息
 
 ### Automatic Project Convention Detection
 
@@ -161,46 +178,50 @@ Default is English. Generates in 中文 if detected as 中文 project.
 - `perf`: Performance improvements
 - `test`: Adding or fixing tests
 
-### Output Example (English Project)
+### 输出示例（英文项目）
 
 ```bash
 $ /commit-message
 
-📝 Commit Message Suggestions
+📝 提交信息建议
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✨ Main Candidate:
+✨ 推荐的提交信息:
 feat: implement JWT-based authentication system
 
-📋 Alternatives:
+📋 备选方案:
 1. feat: add user authentication with JWT tokens
 2. fix: resolve token validation error in auth middleware
 3. refactor: extract auth logic into separate module
 
-✅ `git commit -m "feat: implement JWT-based authentication system"` copied to clipboard
+❓ 是否使用推荐的提交信息提交代码？ (Y/n): Y
+
+✅ 正在提交...
+[main 1a2b3c4] feat: implement JWT-based authentication system
+ 3 files changed, 45 insertions(+), 2 deletions(-)
+
+🎉 提交成功！
 ```
 
-**Implementation Example (Fixed)**:
+### 输出示例（取消提交）
 
 ```bash
-# Copy commit command to clipboard first (no newline)
-printf 'git commit -m "%s"' "$COMMIT_MESSAGE" | pbcopy
+❓ 是否使用推荐的提交信息提交代码？ (Y/n): n
 
-# Then display message
-cat << EOF
-📝 Commit Message Suggestions
-━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 已复制到剪贴板: git commit -m "feat: implement JWT-based authentication system"
+ℹ️  您可以稍后手动运行该命令
+```
 
-✨ Main Candidate:
-$COMMIT_MESSAGE
+### 输出示例（选择备选方案）
 
-📋 Alternatives:
-1. ...
-2. ...
-3. ...
+```bash
+❓ 是否使用推荐的提交信息提交代码？ (Y/n): 2
 
-✅ \`git commit -m "$COMMIT_MESSAGE"\` copied to clipboard
-EOF
+✅ 正在提交...
+[main 5f6g7h8] fix: resolve token validation error in auth middleware
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+🎉 提交成功！
 ```
 
 ### Output Example (中文 Project)
@@ -222,13 +243,17 @@ feat: JWT authentication system implemented
 ✅ `git commit -m "feat: JWT authentication system implemented"` copied to clipboard
 ```
 
-### Operation Overview
+### 操作流程
 
-1. **Analysis**: Analyze content of `git diff --staged`
-2. **Generation**: Generate appropriate commit message
-3. **Copy**: Automatically copy main candidate to clipboard
+1. **分析**: 分析 `git diff --staged` 的内容
+2. **生成**: 生成合适的提交信息和备选方案
+3. **交互**: 询问用户是否立即提交
+4. **执行**: 根据用户选择执行提交或复制到剪贴板
 
-**Note**: This command does not execute git add or git commit. It only generates commit messages and copies to clipboard.
+**工作模式**:
+- **标准模式**: 提供交互式确认
+- **自动模式** (`--auto`): 直接使用推荐信息提交
+- **取消模式**: 仅生成信息，复制到剪贴板
 
 ### Smart Features
 
@@ -322,27 +347,44 @@ fix: resolve memory leak in cache manager
 docs: update API documentation
 ```
 
-### Integration with Claude
+### 与 Claude 协作
 
 ```bash
-# Use with staged changes
-git add -p  # Interactive staging
+# 使用暂存变更
+git add -p  # 交互式暂存
 /commit-message
-"Generate optimal commit message"
+"生成最佳提交信息并询问是否提交"
 
-# Stage and analyze specific files
+# 暂存并分析特定文件
 git add src/auth/*.js
-/commit-message --lang en
-"Generate message for authentication changes"
+/commit-message --lang zh
+"为认证相关变更生成提交信息"
 
-# Breaking Change detection and handling
+# 破坏性更改检测和处理
 git add -A
 /commit-message --breaking
-"Mark appropriately if there are breaking changes"
+"检测破坏性更改并适当标记"
+
+# 自动模式（跳过确认）
+git add .
+/commit-message --auto
+"直接使用推荐信息提交"
 ```
+
+### 安全检查
+
+在执行提交前会进行以下检查：
+
+1. **暂存区检查**: 确保有暂存的变更
+2. **冲突检查**: 检查是否有未解决的合并冲突
+3. **Hook 检查**: 确认 pre-commit hooks 可以正常运行
+4. **分支检查**: 确认当前分支状态
+
+如果检查失败，会显示错误信息并取消提交。
 
 ### 重要说明
 
-- **Prerequisite**: Changes must be staged with `git add` beforehand
-- **Limitation**: Unstaged changes are not analyzed
-- **Recommendation**: Check existing project commit conventions first
+- **前提条件**: 必须先使用 `git add` 暂存变更
+- **限制**: 不会分析未暂存的变更
+- **建议**: 首先检查项目现有的提交约定
+- **安全**: 提交前会进行多项检查确保代码安全
