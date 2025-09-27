@@ -26,17 +26,19 @@
 
 ## 🚀 快速开始
 
-### 一键安装
+### 手动安装
 
 ```bash
-# 方法一：自动安装（推荐）
-curl -fsSL https://raw.githubusercontent.com/kedoupi/ccinit/main/install.sh | bash
-
-# 方法二：手动安装
+# 下载项目
 git clone https://github.com/kedoupi/ccinit.git
-cd ccinit
-chmod +x install.sh
-./install.sh
+
+# 复制到 Claude Desktop 目录
+cp -r ccinit ~/.claude
+
+# 设置脚本执行权限
+chmod +x ~/.claude/scripts/*.sh
+find ~/.claude/hooks -name "*.py" -exec chmod +x {} \;
+find ~/.claude/hooks -name "*.sh" -exec chmod +x {} \;
 ```
 
 ### 配置 Claude Desktop
@@ -316,7 +318,6 @@ ccinit/
 ├── commands/          # 智能命令库
 ├── agents/roles/     # 专家角色定义
 ├── scripts/          # 自动化脚本
-├── install.sh        # 一键安装脚本
 └── CLAUDE.md         # 全局指令文件
 ```
 
