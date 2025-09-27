@@ -37,7 +37,7 @@ feat: 实现 JWT 鉴权流程
 1. **规范识别**：读取 `commitlint.config.*`、`.commitlintrc.*`、`package.json` 中的配置。
 2. **类型推断**：统计近期 `git log`，继承自定义 type（如 `wip`、`deps`、`release`）。
 3. **语言判断**：结合配置、提交历史和改动文件内容选择中文或英文。
-4. **破坏性改动**：启用 `--breaking` 时标记 `!` 或在描述中提示重大变更。
+4. **破坏性改动**：启用 `--breaking` 时标记感叹号或在描述中提示重大变更。
 
 ### 默认输出格式
 遵循 Conventional Commits：

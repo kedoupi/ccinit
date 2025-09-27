@@ -5,7 +5,7 @@
     "BASH_MAX_TIMEOUT_MS": "600000",
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "true",
     "CLAUDE_LANGUAGE": "zh",
-    "SHELL": "/opt/homebrew/bin/zsh"
+    "SHELL": "/bin/zsh"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
