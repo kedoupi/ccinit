@@ -1,104 +1,55 @@
-## 检查 Fact
+## Check Fact
 
-Verifies if a statement is true by checking your project's code and documentation.
+### 核心作用
+验证给定陈述是否与代码库、文档和配置一致，避免错误认知或过时信息影响决策。
 
-### 用法
+### 适用场景
+- 撰写规格、汇报或博客前进行事实核对
+- 接手项目时确认某功能/技术栈是否真实存在
+- 安全、合规内容需要双重确认
 
+### 快速用法
 ```bash
-# Basic usage
-/check-fact "The Flutter app uses Riverpod"
-
-# Check multiple facts at once
-/check-fact "This project uses GraphQL and manages routing with auto_route"
-
-# Check technical details
-/check-fact "JWT is used for authentication, and Firebase Auth is not used"
+/check-fact "项目使用 JWT 并通过 Secure Storage 存储令牌"
+/check-fact "Flutter 客户端的状态管理是 Riverpod"
+/check-fact "我们已经实现暗色模式切换"
 ```
 
-### How It Works
+### 检查顺序
+1. **代码实现**：源码、测试、配置文件（可信度最高）。
+2. **文档说明**：README、docs、ADR、Wiki 等。
+3. **交流记录**：Issue、PR、Commit 信息（作为补充）。
 
-1. **Where I Look (in order)**
-   - The actual code (most trustworthy)
-   - README.md and docs/ folder
-   - Config files (package.json, pubspec.yaml, etc.)
-   - Issues and PR discussions
+### 结果判定
+- `✅ 正确`：陈述与事实完全一致。
+- `❌ 错误`：与代码或文档相反。
+- `⚠️ 部分正确`：部分成立，需补充说明。
+- `❓ 无法确定`：项目中缺乏证据或信息不足。
 
-2. **What You'll See**
-   - `✅ Correct` - Statement matches the code exactly
-   - `❌ Incorrect` - Statement is wrong
-   - `⚠️ Partially correct` - Some parts are right, some aren't
-   - `❓ Cannot determine` - Not enough info to check
-
-3. **Proof I Provide**
-   - File name and line number
-   - Relevant code snippets
-   - Matching documentation
-
-### Report Format
-
+### 输出结构
 ```
-## 事实检查结果
+事实核查报告
+━━━━━━━━━━━━━━━━━━━━━━
+陈述：...
+结论：✅/❌/⚠️/❓ + 理由
 
-### What You Asked
-"[Your statement]"
+关键证据
+- 文件：path/to/file#L123
+- 片段：...
+- 说明：...
 
-### Verdict
-[✅/❌/⚠️/❓] [True/False/Partial/Unknown]
-
-### Evidence
-- **File**: `path/to/file.dart:123`
-- **Code**: [The actual code]
-- **Note**: [Why this proves it]
-
-### Details
-[If wrong, here's what's actually true]
-[If partial, here's what's missing]
-[If unknown, here's what I'd need to check]
-```
-
-### 基础示例
-
-```bash
-# Check the tech stack
-/check-fact "This app is built with Flutter + Riverpod + GraphQL"
-
-# Check if a feature exists
-/check-fact "Dark mode is implemented and can be switched from user settings"
-
-# Check architecture choices
-/check-fact "All state management is done with Riverpod, BLoC is not used"
-
-# Check security setup
-/check-fact "Authentication tokens are encrypted and stored in secure storage"
+补充说明
+- 若错误：实际情况 / 正确写法
+- 若部分正确：缺失或例外
+- 若无法确定：需要补充的资料
 ```
 
 ### 与 Claude 协作
+- 提供相关文件（代码、配置、文档）后执行 `/check-fact`，让 Claude 汇总证据。
+- 结合 `/plan`、`/spec` 等命令，确保方案描述与实现一致。
+- 如果陈述敏感（安全、隐私），请注意隐藏密钥与敏感数据。
 
-```bash
-# Check dependencies
-ls -la && find . -name "pubspec.yaml" -exec cat {} \;
-/check-fact "The main dependencies used in this project are..."
-
-# Check how something is built
-grep -r "authentication" . --include="*.dart"
-/check-fact "Authentication is custom built, not using third-party auth"
-
-# Check if docs match reality
-cat README.md
-/check-fact "Everything in the README is actually implemented"
-```
-
-### When to Use This
-
-- Writing specs: Make sure your descriptions are accurate
-- Taking over a project: Check if you understand it correctly  
-- Client updates: Verify what's actually built
-- Blog posts: Fact-check your technical content
-- Presentations: Confirm project details before presenting
-
-### Important
-
-- Code beats docs: If they disagree, the code is right
-- Old docs happen: Implementation is what matters
-- No guessing: If I can't verify it, I'll say so
-- Security matters: Extra careful with security-related facts
+### 使用建议
+- 多个事实可拆分检查，便于精确指出矛盾点。
+- 遇到矛盾时，默认以代码实现为准，再更新文档。
+- 无法确定时，可请 Claude 指出需要补充的文件或命令。

@@ -1,134 +1,61 @@
 ## Plan
 
-Helps you plan before coding. Creates detailed strategies to make development smoother.
+### 核心作用
+在开始编码前生成结构化实施计划：明确需求、拆分任务、设计方案，并在执行前获得用户确认，确保开发节奏和质量受控。
 
-### 用法
+### 适用场景
+- 新功能或大型改造需要完整实施路线
+- 系统设计、数据库设计、接口规划等需要多阶段评估
+- 想要提前发现风险、列出验收标准、安排测试任务
 
+### 快速用法
 ```bash
-# Request Plan Mode from Claude
-"Create an implementation plan for [implementation content]"
+/plan
+"为 [Topic] 制定实施计划"
 ```
 
-### 基础示例
+> 示例：
+> - 创建用户认证功能的开发计划
+> - 拆解单体迁移到微服务的路线
+> - 制定遗留代码重构计划
 
-```bash
-# Implementation plan for new feature
-"Create an implementation plan for user authentication functionality"
+### 推荐提示语
+- "Create an implementation plan for ..."
+- "Help me design a plan covering architecture / data / testing for ..."
+- "Break down the steps, risks, and checks before coding ..."
 
-# System design plan
-"Create an implementation plan for microservice splitting"
+### Claude 协作流程
+1. 描述目标或问题，触发 Plan Mode。
+2. Claude 会自动梳理需求、风险、设计要点，并以计划形式呈现。
+3. 通过 `exit_plan_mode` 展示计划供你确认；未确认前不会进入编码阶段。
+4. 你可以要求调整、补充或重新排序；确认后再执行后续任务。
 
-# Refactoring plan
-"Create a refactoring plan for legacy code"
+### 输出结构
+```
+实施计划
+━━━━━━━━━━━━━━━━━━━━━━
+目标概述
+- 背景 / 业务目标
+- 完成标准（Acceptance Criteria）
+
+阶段拆分
+1. 阶段名称（范围、负责人、时间）
+2. 关键任务列表（含依赖与检查点）
+3. 验证与测试策略
+
+风险与对策
+- 风险描述 → 触发条件 → 缓解方案
+
+所需资源 / 沟通节奏
+- 评审节点、文档、工具
 ```
 
-### 与 Claude 协作
-
-```bash
-# Complex feature implementation
-"Create an implementation plan for chat functionality, including WebSocket, real-time notifications, and history management"
-
-# Database design
-"Create a database design plan for an e-commerce site, including product, order, and user management"
-
-# API design
-"Create an implementation plan for GraphQL API, including authentication, caching, and rate limiting"
-
-# Infrastructure design
-"Create an implementation plan for Dockerization, including development environment, production environment, and CI/CD"
-```
-
-### How Plan Mode Works
-
-**Automatic Start**
-
-- Starts automatically when you describe what to build
-- Or just say "Create an implementation plan"
-
-**What You Get**
-
-- Clear requirements (user stories, success criteria)
-- Design docs (architecture, data model, UI)
-- Implementation steps (tasks, tracking, quality checks)
-- Risk analysis and solutions
-
-**Getting Your Approval**
-
-- I'll show you the plan using `exit_plan_mode`
-- **Important**: I always wait for your explicit OK
-- I won't code without your approval
-- You can request changes anytime
-- TodoWrite tracking starts after you approve
-
-### 详细示例
-
-```bash
-# Complex system implementation
-"Create an implementation plan for an online payment system, including Stripe integration, security, and error handling"
-
-# Frontend implementation
-"Create an implementation plan for a React dashboard, including state management, component design, and testing"
-
-# Backend implementation
-"Create an implementation plan for a RESTful API, including authentication, validation, and logging"
-
-# DevOps implementation
-"Create an implementation plan for a CI/CD pipeline, including test automation, deployment, and monitoring"
-```
-
-### 3-Phase Workflow
-
-#### Phase 1: Requirements
-
-- **User Stories**: What are we building and why?
-- **Success Criteria**: How do we know it's done?
-- **Constraints**: What limits do we have?
-- **Priority**: What's must-have vs nice-to-have?
-
-#### Phase 2: Design
-
-- **Architecture**: How will the system work?
-- **Data Model**: Database schema and APIs
-- **UI/UX**: Screen layouts and user flow
-- **Risks**: What could go wrong and how to prevent it
-
-#### Phase 3: Implementation
-
-- **Task Breakdown**: Split into manageable chunks
-- **Progress Tracking**: TodoWrite manages status
-- **Quality Checks**: Testing and verification plan
-- **Your Approval**: Show plan and wait for your OK
+### 使用建议
+- 复杂项目使用完整模板；小修小补可跳过，避免额外开销。
+- 如果 Claude 未覆盖某些约束（预算、合规等），可以补充信息让计划更贴合实际。
+- 计划确认后才进入执行；如需调整请明确说明，避免计划与执行脱节。
 
 ### 注意事项
-
-**When to Use This**
-
-- Best for complex projects
-- Skip for simple fixes
-- Great for 3+ step tasks or new features
-
-**Technical Notes**
-
-- Don't rely on `exit_plan_mode` return values
-- Only your explicit approval counts
-- Works differently than CLI plan mode
-
-**Important Rules**
-
-- Never start coding before you approve
-- Always wait for your response
-- Offer alternatives if something fails
-
-### Execution Example
-
-```bash
-# Usage example
-"Create an implementation plan for a user management system"
-
-# What happens:
-# 1. Plan Mode starts
-# 2. Analyze requirements and pick tech
-# 3. Structure the implementation
-# 4. Show you the plan
-# 5. Start coding after you approve
-```
+- 不依赖 `exit_plan_mode` 的返回数据，最终答案以 Claude 展示的计划为准。
+- TodoWrite 任务跟踪在你确认计划后才会启动。
+- 若计划存在多个实现选项，可要求 Claude 给出对比，再确定最终路线。

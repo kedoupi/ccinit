@@ -1,258 +1,63 @@
-## 错误修复
+## Fix Error
 
-分析错误信息以找到根本原因并提供经过验证的修复方案。
+### 核心作用
+根据错误日志或异常输出，定位根因、给出修复方案，并提供预防措施，减少重复性故障。
 
-### 用法
+### 适用场景
+- 构建、测试、运行出现报错，希望快速定位原因
+- 复杂堆栈、性能告警、环境问题难以判断优先级
+- 想同步获得修复步骤、验证方法及长期防范策略
 
+### 快速用法
 ```bash
-/fix-error [options]
-```
-
-### Options
-
-- None: Standard error analysis
-- `--deep`: Deep dive including dependencies and environment
-- `--preventive`: Focus on preventing future occurrences
-- `--quick`: Quick fixes only
-
-### 基础示例
-
-```bash
-# Standard error analysis
-npm run build 2>&1
+npm run build 2>&1 | tail -100
 /fix-error
-"Analyze this build error and suggest fixes"
-
-# Deep analysis mode
-python app.py 2>&1
-/fix-error --deep
-"Find the root cause, including environment issues"
-
-# Quick fixes only
-cargo test 2>&1
-/fix-error --quick
-"Just give me a quick fix"
-
-# Prevention-focused
-./app 2>&1 | tail -50
-/fix-error --preventive
-"Fix this and help me prevent it next time"
+"请分析该构建错误并列出修复方案"
 ```
+
+可选模式：
+- `--deep`：连同依赖、环境、配置一起排查。
+- `--quick`：仅反馈高概率快速修复方案。
+- `--preventive`：强调预防措施和长期改进。
+
+### 建议信息收集
+- 必填：完整错误信息、堆栈、复现步骤。
+- 建议：环境信息（系统、版本、依赖）、最近代码变更、相关日志。
+- 可选：系统资源、网络状况、外部服务状态。
+
+### 输出结构
+```
+错误分析报告
+━━━━━━━━━━━━━━━━━━━━━━
+错误概览
+- 类型 / 严重度 / 影响范围 / 可复现性
+
+根因定位
+- 直接原因：...
+- 背景因素：...
+- 触发条件：...
+
+修复建议
+🔴 立即处理：...
+🟡 根因修复：...
+🟢 预防措施：...
+
+验证步骤
+1. ...
+2. ...
+```
+
+### 常见问题优先级
+- 🔴 立即解决：服务不可用、数据丢失风险、安全漏洞、生产事故。
+- 🟡 尽快修复：性能退化、部分功能失效、构建/测试阻塞。
+- 🟢 计划治理：警告、技术债、潜在兼容性问题。
 
 ### 与 Claude 协作
-
-```bash
-# Analyze error logs
-cat error.log
-/fix-error
-"What's causing this error and how do I fix it?"
-
-# Resolve test failures
-npm test 2>&1
-/fix-error --quick
-"These tests are failing - need a quick fix"
-
-# Analyze stack traces
-python script.py 2>&1
-/fix-error --deep
-"Dig into this stack trace and check for environment issues"
-
-# Handle multiple errors
-grep -E "ERROR|WARN" app.log | tail -20
-/fix-error
-"Sort these by priority and tell me how to fix each one"
-```
-
-### Error Analysis Priorities
-
-#### Urgency: High (Fix now!)
-
-- **Application downtime**: Crashes, infinite loops, deadlocks
-- **Data loss risk**: Database errors, file corruption
-- **Security vulnerabilities**: Authentication failures, permission errors, injections
-- **Production impact**: Deployment failures, service outages
-
-#### 🟡 Urgency: Medium (Fix soon)
-
-- **Performance issues**: Memory leaks, delays, timeouts
-- **Partial functionality failure**: Errors in specific features, UI glitches
-- **Reduced development efficiency**: Build errors, test failures
-
-#### 🟢 Urgency: Low (Fix when convenient)
-
-- **Warning messages**: Deprecation, lint errors
-- **Development environment only**: Issues only in local environments
-- **Future risks**: Technical debt, maintainability issues
-
-### Analysis Process
-
-#### Phase 1: Error Information Collection
-
-```bash
-🔴 Must have:
-- Full error message
-- Stack trace
-- Steps to reproduce
-
-🟡 Should have:
-- Environment details (OS, versions, dependencies)
-- Recent changes (git log, commits)
-- Related logs
-
-🟢 Nice to have:
-- System resources
-- Network state
-- External services
-```
-
-#### Phase 2: Root Cause Analysis
-
-1. **Identify symptoms**
-   - Exact error message
-   - When and how it happens
-   - What's affected
-
-2. **Find root causes**
-   - Use 5 Whys analysis
-   - Check dependencies
-   - Compare environments
-
-3. **Test your theory**
-   - Create minimal repro
-   - Isolate the issue
-   - Confirm the cause
-
-#### Phase 3: Solution Implementation
-
-```bash
-🔴 Quick fix (hotfix):
-- Stop the bleeding
-- Apply workarounds
-- Get ready to deploy
-
-🟡 Root cause fix:
-- Fix the actual problem
-- Add tests
-- Update docs
-
-🟢 Prevent future issues:
-- Better error handling
-- Add monitoring
-- Improve CI/CD
-```
-
-### Output Example
-
-```
-🚨 Error Analysis Report
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📍 Error Overview
-├─ Type: [Compilation/Runtime/Logical/Environmental]
-├─ Urgency: 🔴 High / 🟡 Medium / 🟢 Low
-├─ Impact Scope: [Feature name/Component]
-└─ Reproducibility: [100% / Intermittent / Specific conditions]
-
-🔍 Root Cause
-├─ Direct Cause: [Specific cause]
-├─ Background Factors: [Environment/Configuration/Dependencies]
-└─ Trigger: [Occurrence conditions]
-
-💡 Solutions
-🔴 Immediate response:
-1. [Specific fix command/code]
-2. [Temporary workaround]
-
-🟡 Fundamental solution:
-1. [Essential fix method]
-2. [Necessary refactoring]
-
-🟢 Preventive measures:
-1. [Error handling improvement]
-2. [Add tests]
-3. [Monitoring setup]
-
-📝 Verification Procedure
-1. [Method to confirm after applying fix]
-2. [Test execution command]
-3. [Operation check items]
-```
-
-### Analysis Methods by Error Type
-
-#### Compilation/Build Errors
-
-```bash
-# TypeScript type errors
-Must check (high):
-- tsconfig.json settings
-- Presence of type definition files (.d.ts)
-- Accuracy of import statements
-
-# Rust lifetime errors
-Must check (high):
-- Ownership movement
-- Reference validity periods
-- Mutability conflicts
-```
-
-#### Runtime Errors
-
-```bash
-# Null/Undefined references
-Must check (high):
-- Insufficient optional chaining
-- Initialization timing
-- Waiting for async processing completion
-
-# Memory-related errors
-Must check (high):
-- Heap dump acquisition
-- GC log analysis
-- Circular reference detection
-```
-
-#### Dependency Errors
-
-```bash
-# Version conflicts
-Must check (high):
-- Lock file consistency
-- Peer dependencies requirements
-- Transitive dependencies
-
-# Module resolution errors
-Must check (high):
-- NODE_PATH settings
-- Path alias configuration
-- Symbolic links
-```
+- 先提供日志或最小复现脚本，再请求分析，可提升准确率。
+- 可要求 Claude 给出排查 checklist、调试命令或临时绕过方案。
+- 分析完成后结合 `/task`、`/plan` 跟踪修复与复盘。
 
 ### 注意事项
-
-- **Absolutely prohibited**: Making judgments based only on part of an error message, applying Stack Overflow solutions without verification
-- **Exception conditions**: Temporary workarounds are only allowed under these 3 conditions:
-  1. Emergency response in production environment (root solution required within 24 hours)
-  2. External service failures (alternative means while waiting for recovery)
-  3. Known framework bugs (waiting for fixed version release)
-- **Recommendation**: Prioritize identifying root causes and avoid superficial fixes
-
-### Best Practices
-
-1. **Complete information collection**: Check error messages from beginning to end
-2. **Reproducibility confirmation**: Prioritize creating minimal reproduction code
-3. **Step-by-step approach**: Start with small fixes and verify
-4. **Documentation**: Record the solution process for knowledge sharing
-
-#### Common Pitfalls
-
-- **Symptom treatment**: Superficial fixes that miss root causes
-- **Overgeneralization**: Widely applying solutions for specific cases
-- **Omitted verification**: Not checking side effects after fixes
-- **Knowledge individualization**: Not documenting solution methods
-
-### Related Commands
-
-- `/design-patterns`: Analyze code structure issues and suggest patterns
-- `/tech-debt`: Analyze root causes of errors from a technical debt perspective
-- `/analyzer`: For cases requiring deeper root cause analysis
+- 修复前评估影响范围，必要时准备回滚或隔离措施。
+- 日志可能包含敏感数据，请先脱敏。
+- 若错误涉及外部服务/依赖，需同步相关团队确认。

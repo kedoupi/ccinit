@@ -1,276 +1,43 @@
-## 角色 Help
+## Role Help
 
-A selection guide and help system when you're unsure which role to use.
+### 核心作用
+当不确定使用哪个专家角色时，提供情境化的选择指南、角色对比与组合建议，帮助快速进入正确的分析模式。
 
-### 用法
-
+### 快速用法
 ```bash
-/role-help                      # General role selection guide
-/role-help <situation/problem>  # Recommended roles for specific situations
-/role-help compare <Role 1>,<Role 2> # Compare roles
+/role-help                              # 查看所有角色摘要
+/role-help "API 安全担忧"                # 根据场景推荐角色
+/role-help compare frontend,mobile      # 对比两个角色的差异
 ```
 
-### 基础示例
-
-```bash
-# General guidance
-/role-help
-→ List of available roles and their characteristics
-
-# Situation-specific recommendation
-/role-help "Concerned about API security"
-→ Recommendation and usage of security role
-
-# Role comparison
-/role-help compare frontend,mobile
-→ Differences and appropriate usage between frontend and mobile roles
-```
-
-### Situation-Based Role Selection Guide
-
-### Security-Related
-
-```
-Use security role for:
-✅ Implementation of login/authentication functions
-✅ Security vulnerability checks for APIs
-✅ Data encryption and privacy protection
-✅ Security compliance verification
-✅ Penetration testing
-
-Usage: /role security
-```
-
-### 🏗️ Architecture & Design
-
-```
-Use architect role for:
-✅ Evaluation of overall system design
-✅ Microservices vs monolith decisions
-✅ Database design and technology selection
-✅ Scalability and extensibility considerations
-✅ Technical debt assessment and improvement planning
-
-Usage: /role architect
-```
-
-### ⚡ Performance Issues
-
-```
-Use performance role for:
-✅ Slow applications
-✅ Database query optimization
-✅ Web page loading speed improvement
-✅ Memory and CPU usage optimization
-✅ Scaling and load countermeasures
-
-Usage: /role performance
-```
-
-### 🔍 Problem Root Cause Investigation
-
-```
-Use analyzer role for:
-✅ Root cause analysis of bugs and errors
-✅ Investigation of system failures
-✅ Structural analysis of complex problems
-✅ Data analysis and statistical research
-✅ Understanding why problems occur
-
-Usage: /role analyzer
-```
-
-### 🎨 Frontend & UI/UX
-
-```
-Use frontend role for:
-✅ User interface improvements
-✅ Accessibility compliance
-✅ Responsive design
-✅ Usability and ease of use enhancement
-✅ General web frontend technologies
-
-Usage: /role frontend
-```
-
-### 📱 Mobile App Development
-
-```
-Use mobile role for:
-✅ iOS and Android app optimization
-✅ Mobile-specific UX design
-✅ Touch interface optimization
-✅ Offline support and synchronization functions
-✅ App Store and Google Play compliance
-
-Usage: /role mobile
-```
-
-### 👀 Code Review & Quality
-
-```
-Use reviewer role for:
-✅ Code quality checks
-✅ Readability and maintainability evaluation
-✅ Coding convention verification
-✅ Refactoring proposals
-✅ PR and commit reviews
-
-Usage: /role reviewer
-```
-
-### 🧪 Testing & Quality Assurance
-
-```
-Use qa role for:
-✅ Test strategy planning
-✅ Test coverage evaluation
-✅ Automated test implementation guidelines
-✅ Bug prevention and quality improvement measures
-✅ Test automation in CI/CD
-
-Usage: /role qa
-```
-
-### When Multiple Roles Are Needed
-
-### 🔄 multi-role (Parallel Analysis)
-
-```
-Use multi-role for:
-✅ Evaluation from multiple professional perspectives
-✅ Creating integrated improvement plans
-✅ Comparing evaluations from different fields
-✅ Organizing contradictions and overlaps
-
-Example: /multi-role security,performance
-```
-
-### 🗣️ role-debate (Discussion)
-
-```
-Use role-debate for:
-✅ Trade-offs between specialized fields
-✅ Divided opinions on technology selection
-✅ Making design decisions through discussion
-✅ Hearing debates from different perspectives
-
-Example: /role-debate security,performance
-```
-
-### 🤖 smart-review (Automatic Proposal)
-
-```
-Use smart-review for:
-✅ Uncertainty about which role to use
-✅ Wanting to know the optimal approach for current situation
-✅ Choosing from multiple options
-✅ Beginner indecision
-
-Example: /smart-review
-```
-
-### Role Comparison Table
-
-### Security Category
-
-| Role | Main Use | Strengths | Weaknesses |
-|------|----------|----------|----------|
-| security | Vulnerability and attack countermeasures | Threat analysis, authentication design | UX, performance |
-| analyzer | Root cause analysis | Logical analysis, evidence collection | Preventive measures, future planning |
-
-### Design Category
-
-| Role | Main Use | Strengths | Weaknesses |
-|------|----------|----------|----------|
-| architect | System design | Long-term perspective, overall optimization | Detailed implementation, short-term solutions |
-| reviewer | Code quality | Implementation level, maintainability | Business requirements, UX |
-
-### Performance Category
-
-| Role | Main Use | Strengths | Weaknesses |
-|------|----------|----------|----------|
-| performance | Speed improvement and optimization | Measurement, bottleneck identification | Security, UX |
-| qa | Quality assurance | Testing, automation | Design, architecture |
-
-### User Experience Category
-
-| Role | Main Use | Strengths | Weaknesses |
-|------|----------|----------|----------|
-| frontend | Web UI/UX | Browser, accessibility | Server-side, DB |
-| mobile | Mobile UX | Touch, offline support | Server-side, Web |
-
-### Decision Flowchart When Unsure
-
-```
-What is the nature of the problem?
-├─ Security-related → security
-├─ Performance issues → performance
-├─ Bug/failure investigation → analyzer
-├─ UI/UX improvement → frontend or mobile
-├─ Design/architecture → architect
-├─ Code quality → reviewer
-├─ Testing-related → qa
-└─ Complex/composite → smart-review for proposal
-
-Spans multiple fields?
-├─ Want integrated analysis → multi-role
-├─ Discussion/trade-offs → role-debate
-└─ Unsure → smart-review
-```
-
-### Frequently Asked Questions
-
-### Q: What's the difference between frontend and mobile roles?
-
-```
-A:
-frontend: Web browser-focused, HTML/CSS/JavaScript
-mobile: Mobile app-focused, iOS/Android native, React Native, etc.
-
-For issues related to both, multi-role frontend,mobile is recommended
-```
-
-### Q: How to choose between security and analyzer roles?
-
-```
-A:
-security: Prevention of attacks and threats, security design
-analyzer: Analysis of causes of existing problems, investigation
-
-For security incident investigations, use multi-role security,analyzer
-```
-
-### Q: What's the difference between architect and performance roles?
-
-```
-A:
-architect: Long-term design of entire systems, scalability
-performance: Specific speed and efficiency improvements
-
-For performance design of large-scale systems, use multi-role architect,performance
-```
-
-### 与 Claude 协作
-
-```bash
-# Combined with situation description
-/role-help
-"React app page loading is slow, receiving complaints from users"
-
-# Combined with file content
-cat problem-description.md
-/role-help
-"Recommend the most suitable role for this problem"
-
-# When unsure between specific options
-/role-help compare security,performance
-"Which role is appropriate for JWT token expiration issues?"
-```
-
-### 注意事项
-
-- For complex problems, combining multiple roles is more effective
-- For urgent matters, use single role for quick response
-- When unsure, it's recommended to use smart-review for automatic proposals
-- The final decision should be made by the user considering the nature of the problem
+### 角色索引
+| 角色 | 适用场景 | 常用命令 |
+| ---- | -------- | -------- |
+| `security` | 登录/权限、安全扫描、合规、LLM 安全 | `/role security`
+| `architect` | 架构评估、技术选型、限界上下文、技术债 | `/role architect`
+| `performance` | 系统/数据库/前端性能优化 | `/role performance`
+| `analyzer` | 根因分析、事故复盘、日志挖掘 | `/role analyzer`
+| `frontend` | UI/UX、可访问性、设计系统 | `/role frontend`
+| `mobile` | iOS/Android、跨端架构、上架合规 | `/role mobile`
+| `reviewer` | 代码审查、风格一致性、可维护性 | `/role reviewer`
+| `qa` | 测试策略、覆盖率、自动化、质量门禁 | `/role qa`
+
+### 情境推荐
+- **安全相关**：身份认证、敏感数据、合规 → `security`
+- **架构设计**：微服务拆分、限界上下文、技术选型 → `architect`
+- **性能瓶颈**：响应慢、N+1、资源过载 → `performance`
+- **复杂故障**：日志排查、异常分析、跨模块影响 → `analyzer`
+- **前端体验**：可用性、响应式、无障碍要求 → `frontend`
+- **移动端**：触控体验、离线策略、商店审核 → `mobile`
+- **代码质量**：PR 审查、重构建议、团队规范 → `reviewer`
+- **测试质量**：测试金字塔、CI 稳定性、Flaky → `qa`
+
+### 组合与对比
+- **并行分析**：`/multi-role security,performance`（安全×性能）、`/multi-role frontend,mobile`（跨端体验）。
+- **立场辩论**：`/role-debate architect,security,performance` 适合有明显取舍的问题。
+- **角色对比**：`/role-help compare frontend,mobile` 输出优势、适用边界、协作方式。
+
+### 使用建议
+- 提前提供上下文（目录结构、日志、需求背景），提升推荐准确度。
+- 如果需求跨多个领域，可先使用 `/smart-review` 再结合 `/role-help` 选择角色。
+- 角色建议不是强制，若结果不符合预期，可补充信息重新执行。

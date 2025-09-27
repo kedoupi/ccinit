@@ -1,87 +1,54 @@
-## 技术债务
+## Tech Debt
 
-发现项目中的技术债务并制定修复计划。
+### 核心作用
+系统梳理项目中的技术债务（代码质量、依赖、架构、安全、测试等），评估影响与修复成本，并制定排序清单与实施计划。
 
-### 用法
-
+### 快速用法
 ```bash
-# Check project structure for tech debt
-ls -la
-"Find the technical debt in this project and make a plan to fix it"
+"请扫描项目技术债：涵盖代码可维护性、依赖健康、安全风险、测试覆盖，并按优先级给出计划"
 ```
 
-### 基础示例
-
+可先收集辅助信息：
 ```bash
-# Find TODO/FIXME comments
-grep -r "TODO\|FIXME\|HACK\|XXX\|WORKAROUND" . --exclude-dir=node_modules --exclude-dir=.git
-"Sort these TODOs by priority and tell me how to fix them"
+rg "TODO|FIXME|HACK" --glob '!node_modules'
+find src -type f -name '*.ts' -exec wc -l {} + | sort -rn | head -10
+npm outdated
+```
 
-# Check dependencies
-ls -la | grep -E "package.json|Cargo.toml|pubspec.yaml|go.mod|requirements.txt"
-"Which dependencies are outdated? What are the risks?"
+### 分析维度
+1. **代码质量**：长函数、重复逻辑、圈复杂度、缺失异常处理。
+2. **依赖管理**：过期版本、已知 CVE、未使用依赖、锁文件不一致。
+3. **架构/分层**：耦合度、循环依赖、违背模块边界、缺少文档。
+4. **安全**：硬编码凭据、弱算法、日志泄露、缺失安全头/校验。
+5. **测试/流程**：覆盖率、Flaky、缺失自动化、CI 门禁不足。
+6. **性能/运维**：慢查询、缺失监控、配置漂移、资源浪费。
 
-# Find big files and complex code
-find . -type f -not -path "*/\.*" -not -path "*/node_modules/*" -exec wc -l {} + | sort -rn | head -10
-"Which files are too big? How should we split them up?"
+### 输出结构（示例）
+```
+技术债务报告
+━━━━━━━━━━━━━━━━━━━━━━
+总览
+- 高风险：3 项
+- 中风险：5 项
+- 低风险：6 项
+
+优先级清单（示例）
+1. 🔴 Security - 明文存储秘钥（影响：高 / 工作量：中 / 建议：立即修复）
+2. 🟡 Architecture - UserService 结构过于庞大（影响：中 / 工作量：大 / 建议：拆分计划）
+3. 🟢 Testing - 缺少支付流程 E2E 测试（影响：中 / 工作量：中 / 建议：两周内补齐）
+
+分阶段计划
+- Sprint 1：安全整改、依赖升级
+- Sprint 2：模块拆分、补充关键测试
+- Sprint 3：完善监控与文档
 ```
 
 ### 与 Claude 协作
+- 在执行 `/tech-debt` 前提供 `git ls-tree`、`rg`、`dependency` 等输出，便于精准定位。
+- 可要求 Claude 生成“影响 × 努力 × 风险”矩阵或甘特图。
+- 结合 `/plan` 制定路线图，或用 `/task` 创建后续改进任务。
 
-```bash
-# Full tech debt analysis
-ls -la && find . -name "*.md" -maxdepth 2 -exec head -20 {} \;
-"Check this project's tech debt:
-1. Code quality (too complex? duplicated? hard to maintain?)
-2. Are dependencies healthy?
-3. Security problems?
-4. Performance issues?
-5. Missing tests?"
-
-# Architecture debt check
-find . -type d -name "src" -o -name "lib" -o -name "app" | head -10 | xargs ls -la
-"What's wrong with the architecture? How do we fix it?"
-
-# Make a priority list
-"Rate the tech debt and show me a table with:
-- Impact (High/Medium/Low)
-- Time to fix
-- Business risk
-- What we gain
-- When to do it"
-```
-
-### 详细示例
-
-```bash
-# Auto-detect project type and analyze
-find . -maxdepth 2 -type f \( -name "package.json" -o -name "Cargo.toml" -o -name "pubspec.yaml" -o -name "go.mod" -o -name "pom.xml" \)
-"For this project type, check:
-1. Language-specific debt
-2. Where we break best practices
-3. What can be modernized
-4. Step-by-step fix plan"
-
-# Code quality check
-find . -type f -name "*" | grep -E "\.(js|ts|py|rs|go|dart|kotlin|swift|java)$" | wc -l
-"Check code quality:
-- Which functions are too complex?
-- Where's the duplicate code?
-- What's too long?
-- Where's error handling missing?"
-
-# Security debt check
-grep -r "password\|secret\|key\|token" . --exclude-dir=.git --exclude-dir=node_modules | grep -v ".env.example"
-"Find security problems and tell me what to fix first"
-
-# Test coverage check
-find . -type f \( -name "*test*" -o -name "*spec*" \) | wc -l && find . -type f -name "*.md" | xargs grep -l "test"
-"Where are tests missing? What's our testing strategy?"
-```
-
-### 注意事项
-
-- Auto-detects your language and framework
-- Splits debt into "fix now" vs "fix later"
-- Balances business needs with tech improvements
-- Shows ROI - what you get for the effort
+### 使用建议
+- 优先处理高影响、高概率引发事故的项目，其次是可增强团队效率的项。
+- 建议定期（如每季度）运行一次，形成技术债台账。
+- 修复前确认业务节奏，必要时与产品/项目管理同步安排。

@@ -1,223 +1,56 @@
-## 任务
+## Task
 
-Launches a smart agent to handle complex searches and investigations. Great for large-scale work without eating up context.
+### 核心作用
+启动“任务代理”执行大规模调研或搜索：自动拆解问题、调用多种工具收集证据、汇总成结构化报告，节省上下文并保持结果可追溯。
 
-### 用法
+### 适用场景
+- 需要跨多文件、多目录或外部资料的大范围调查
+- 想要整理数据库/依赖/配置等清单，并输出优先级与建议
+- 希望自动化收集日志、指标、文档并形成报告
 
+### 快速用法
 ```bash
-# Request Task from Claude
-"Investigate [task] using Task"
+"请使用 Task 调查该项目中的 JWT 使用方式，并整理安全风险"
+"Use Task to compare React Query vs SWR performance benchmarks"
 ```
 
-### What Task Does
+### Task 与其他模式区别
+| 指令 | 侧重点 | 适用场景 |
+| ---- | ------ | -------- |
+| `Task` | 调研、搜索、信息整合 | 多源、多步骤调查 |
+| `/ultrathink` | 深度思考、推演 | 复杂判断、策略制定 |
+| `/plan` | 实施计划 | 拆解需求与路线 |
+| `/sequential-thinking` | 分步求解 | 算法/设计问题分解 |
 
-**Works Independently**
+### 工作流程
+1. **任务拆解**：识别调查范围、资料来源、工具需求。
+2. **信息收集**：批量搜索源码/配置、调用外部 API、抓取文档。
+3. **分析整合**：交叉验证、对比、生成图表或表格。
+4. **报告输出**：总结发现、列出风险与下一步行动。
 
-- Combines multiple tools automatically
-- Gathers and analyzes step by step
-- Puts results together in clear reports
+### 输出示例
+```
+Task 结果：项目依赖安全分析
+━━━━━━━━━━━━━━━━━━━━━━
+范围：package.json / lockfile
+发现：
+- lodash 4.17.15 (CVE-2021-23337)
+- jsonwebtoken 8.x 存在已知风险
 
-**Saves Context**
+建议：
+1. 升级 lodash 至 ≥4.17.21
+2. 调整 jwt 签名算法并补充测试
 
-- Uses less memory than manual searching
-- Searches lots of files efficiently
-- Pulls data from outside sources
-
-**Ensures Quality**
-
-- Checks if sources are reliable
-- Verifies from different angles
-- Fills in missing pieces
-
-### 基础示例
-
-```bash
-# Complex codebase investigation
-"Investigate which files implement this feature using Task"
-
-# Large-scale file search
-"Identify configuration file inconsistencies using Task"
-
-# External information collection
-"Investigate the latest AI technology trends using Task"
+附录：
+- 引用链接 / 执行命令 / 原始输出
 ```
 
-### 与 Claude 协作
-
-```bash
-# Complex problem analysis
-"Analyze the cause of memory leaks using Task, including profiling results and logs"
-
-# Dependency investigation
-"Investigate vulnerabilities of this npm package using Task"
-
-# Competitor analysis
-"Investigate API specifications of competing services using Task"
-
-# Architecture analysis
-"Analyze dependencies of this microservice using Task"
-```
-
-### Task vs Other Commands
-
-#### When to Use What
-
-| Command | Main Use Case | Execution Method | Information Collection |
-|---------|---------------|-----------------|------------------------|
-| **Task** | Investigation, analysis, search | Autonomous execution | Multiple sources |
-| ultrathink | Deep thinking, judgment | Structured thinking | Existing knowledge-focused |
-| sequential-thinking | Problem-solving, design | Step-by-step thinking | As needed |
-| plan | Implementation planning | Approval process | Requirement analysis |
-
-#### Quick Decision Guide
-
-```
-Need to gather info?
-├─ Yes → From many places or lots of files?
-│          ├─ Yes → **Use Task**
-│          └─ No → Just ask normally
-└─ No → Need deep thinking?
-          ├─ Yes → Use ultrathink/sequential-thinking
-          └─ No → Just ask normally
-```
-
-### When Task Works Best
-
-**Great For**
-
-- Exploring complex codebases (dependencies, architecture)
-- Searching many files (patterns, configs)
-- Gathering external info (tech trends, libraries)
-- Combining data from multiple places (logs, metrics)
-- Repetitive investigations (audits, debt checks)
-- Big searches that would eat too much context
-
-**Not Great For**
-
-- Simple questions I already know
-- Quick one-time tasks
-- Things needing back-and-forth discussion
-- Design decisions (use plan or thinking commands instead)
-
-### 详细示例 by Category
-
-#### System Analysis and Investigation
-
-```bash
-# Complex system analysis
-"Identify bottlenecks in the EC site using Task, investigating database, API, and frontend"
-
-# Architecture analysis
-"Analyze dependencies of this microservice using Task, including API communication and data flow"
-
-# Technical debt investigation
-"Analyze technical debt in legacy code using Task, including refactoring priorities"
-```
-
-#### Security and Compliance
-
-```bash
-# Security audit
-"Investigate vulnerabilities in this application using Task, based on OWASP Top 10"
-
-# License investigation
-"Investigate license issues in project dependencies using Task"
-
-# Configuration file audit
-"Identify security configuration inconsistencies using Task, including environment differences"
-```
-
-#### Performance and Optimization
-
-```bash
-# Performance analysis
-"Identify heavy queries in the application using Task, including execution plans and optimization proposals"
-
-# Resource usage investigation
-"Investigate causes of memory leaks using Task, including profiling results and code analysis"
-
-# Bundle size analysis
-"Investigate frontend bundle size issues using Task, including optimization suggestions"
-```
-
-#### External Information Collection
-
-```bash
-# Technology trend investigation
-"Investigate 2024 JavaScript framework trends using Task"
-
-# Competitor analysis
-"Investigate API specifications of competing services using Task, including feature comparison table"
-
-# Library evaluation
-"Compare state management libraries using Task, including performance and learning costs"
-```
-
-### Execution Flow and Quality Assurance
-
-#### Task Execution Flow
-
-```
-1. Initial Analysis
-   ├─ Decomposition of task and identification of investigation scope
-   ├─ Selection of necessary tools and information sources
-   └─ Development of execution plan
-
-2. Information Collection
-   ├─ File search and code analysis
-   ├─ Collection of external information
-   └─ Data structuring
-
-3. Analysis and Integration
-   ├─ Relevance analysis of collected information
-   ├─ Identification of patterns and issues
-   └─ Verification of hypotheses
-
-4. Reporting and Proposal
-   ├─ Structuring of results
-   ├─ Creation of improvement proposals
-   └─ Presentation of next actions
-```
-
-#### Quality Assurance
-
-- **Reliability check of information sources**: Fact confirmation from multiple sources
-- **Completeness check**: Verification of no gaps in investigation targets
-- **Consistency verification**: Confirmation of consistency in conflicting information
-- **Practicality evaluation**: Assessment of feasibility and effectiveness of proposals
-
-### Error Handling and Constraints
-
-#### Common Constraints
-
-- **External API usage limits**: Rate limits and authentication errors
-- **Large file processing limits**: Memory and timeout constraints
-- **Access permission issues**: Restrictions on file and directory access
-
-#### Error Handling
-
-- **Partial result reporting**: Analysis with only obtainable information
-- **Alternative proposals**: Suggestion of alternative investigation methods under constraints
-- **Stepwise execution**: Division of large-scale tasks for execution
+### 使用建议
+- 请输入明确目标、优先级或期望格式（表格、列表、报告）。
+- 若涉及外部搜索，请注明允许使用 `gemini --prompt` 等指令。
+- 巨量结果可要求 Task 仅输出摘要，并附“进一步深入建议”。
 
 ### 注意事项
-
-- Task is optimal for complex, autonomous investigation and analysis tasks
-- For simple questions or when immediate answers are needed, use normal question format
-- Treat investigation results as reference information and always verify important decisions
-- When collecting external information, pay attention to the freshness and accuracy of information
-
-### Execution Example
-
-```bash
-# Usage example
-"Investigate issues in GraphQL schema using Task"
-
-# Expected behavior
-# 1. Dedicated agent starts
-# 2. Search for GraphQL-related files
-# 3. Analyze schema definitions
-# 4. Compare with best practices
-# 5. Identify issues and propose improvements
-# 6. Create structured report
-```
+- Task 会消耗较多时间/资源，适合复杂场景；简单问题直接提问即可。
+- 若遇到权限或网络限制，Task 会返回部分结果并建议手动步骤。
+- 输出报告后，建议结合 `/plan`、`/task` 或项目管理工具落地执行。

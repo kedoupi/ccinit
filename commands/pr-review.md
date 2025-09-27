@@ -1,142 +1,70 @@
-## PR审查
+## PR Review
 
-通过系统化的Pull Request审查确保代码质量和架构健全性。
+### 核心作用
+按照统一的优先级体系审查 Pull Request，从正确性、安全、性能、架构等维度发现问题并给出可执行的改进建议。
 
-### 用法
+### 适用场景
+- 需要系统化评估大型 PR 的风险与质量
+- 想明确指出阻断项、建议项、讨论项等不同级别反馈
+- 希望生成结构化评论、示例代码与检查清单
 
+### 快速用法
 ```bash
-# Comprehensive PR review
-gh pr view 123 --comments
-"Systematically review this PR and provide feedback from code quality, security, and architecture perspectives"
-
-# Security-focused review
-gh pr diff 123
-"Focus on reviewing security risks and vulnerabilities"
-
-# Architecture perspective review
-gh pr checkout 123 && find . -name "*.js" | head -10
-"Evaluate the architecture from the perspectives of layer separation, dependencies, and SOLID principles"
+gh pr view 123 --comments | /pr-review
+"请从安全、性能、架构角度审查该 PR，并给出分级意见"
 ```
 
-### 基础示例
+可指定侧重：
+- 安全审查：`/pr-review --focus security`
+- 架构评估：`/pr-review --focus architecture`
+- 性能关注：`/pr-review --focus performance`
 
-```bash
-# Quantitative code quality assessment
-find . -name "*.js" -exec wc -l {} + | sort -rn | head -5
-"Evaluate code complexity, function size, and duplication, and point out improvements"
+### 评论分级
+- `🔴 critical.must`：阻断级，安全漏洞、数据破坏、服务不可用。
+- `🟡 high.imo`：高优先级，潜在缺陷、性能隐患、严重可维护性问题。
+- `🟢 medium.imo`：中等优先级，结构优化、可读性、测试不足。
+- `🟢 low.nits`：低优先级，风格、命名、注释等细节。
+- `🔵 info.q`：提问或背景信息确认。
 
-# Security vulnerability check
-grep -r "password\|secret\|token" . --include="*.js" | head -10
-"Check for risks of sensitive information leakage, hardcoding, and authentication bypass"
+### 审查流程
+1. **预检**：检查 PR 基本信息、关联 Issue、变更范围、CI 状态。
+2. **系统审查**：按正确性 → 安全 → 性能 → 架构 → 文档/测试的顺序。
+3. **反馈撰写**：定位问题 → 说明影响 → 提供解决方案或示例代码。
+4. **后续跟进**：确认修复、复查 CI、记录复盘要点。
 
-# Architecture violation detection
-grep -r "import.*from.*\.\./\.\." . --include="*.js"
-"Evaluate layer violations, circular dependencies, and coupling issues"
+### 输出结构（示例）
+```
+PR 审查报告
+━━━━━━━━━━━━━━━━━━━━━━
+摘要
+- 变更范围 / 风险评估 / 建议优先级
+
+关键发现
+1. 🔴 critical.must src/auth/service.ts:123
+   - 问题：密码以明文写入日志
+   - 建议：改为掩码或移除日志
+
+2. 🟡 high.imo src/api/user.ts:88
+   - 问题：存在 N+1 查询
+   - 建议：使用 eager loading
+
+改进建议
+- 补充测试 / 更新文档 / 重构建议
 ```
 
-### Comment Classification System
+### 常见检查要点
+- **正确性**：边界条件、异常处理、数据校验、幂等性。
+- **安全**：认证授权、输入验证、敏感数据、日志脱敏。
+- **性能**：时间复杂度、N+1、缓存策略、异步/并发风险。
+- **架构**：分层依赖、耦合度、接口/抽象、SOLID 原则。
+- **文档与测试**：是否覆盖新增场景、更新清单、风险说明。
 
-```
-🔴 critical.must: Critical issues
-├─ Security vulnerabilities
-├─ Data integrity problems
-└─ System failure risks
-
-🟡 high.imo: High-priority improvements
-├─ Risk of malfunction
-├─ Performance issues
-└─ Significant decrease in maintainability
-
-🟢 medium.imo: Medium-priority improvements
-├─ Readability enhancement
-├─ Code structure improvement
-└─ Test quality improvement
-
-🟢 low.nits: Minor points
-├─ Style unification
-├─ Typo fixes
-└─ Comment additions
-
-🔵 info.q: Questions/information
-├─ Implementation intent confirmation
-├─ Design decision background
-└─ Best practices sharing
-```
-
-### Review Perspectives
-
-#### 1. Code Correctness
-
-- **Logic errors**: Boundary values, null checks, exception handling
-- **Data integrity**: Type safety, validation
-- **Error handling**: Completeness, appropriate processing
-
-#### 2. Security
-
-- **Authentication/authorization**: Appropriate checks, permission management
-- **Input validation**: SQL injection, XSS countermeasures
-- **Sensitive information**: Logging restrictions, encryption
-
-#### 3. Performance
-
-- **Algorithms**: Time complexity, memory efficiency
-- **Database**: N+1 queries, index optimization
-- **Resources**: Memory leaks, cache utilization
-
-#### 4. Architecture
-
-- **Layer separation**: Dependency direction, appropriate separation
-- **Coupling**: Tight coupling, interface utilization
-- **SOLID principles**: Single responsibility, open-closed, dependency inversion
-
-### Review Flow
-
-1. **Pre-check**: PR information, change diff, related issues
-2. **Systematic checks**: Security → Correctness → Performance → Architecture
-3. **Constructive feedback**: Specific improvement suggestions and code examples
-4. **Follow-up**: Fix confirmation, CI status, final approval
-
-### Effective Comment Examples
-
-**Security Issues**
-
-```markdown
-**critical.must.** Password is stored in plaintext
-
-```javascript
-// Proposed fix
-const bcrypt = require('bcrypt');
-const hashedPassword = await bcrypt.hash(password, 12);
-```
-
-Hashing is required to prevent security risks.
-
-```
-
-**Performance Improvement**
-```markdown
-**high.imo.** N+1 query problem occurs
-
-```javascript
-// Improvement: Eager Loading
-const users = await User.findAll({ include: [Post] });
-```
-
-This can significantly reduce the number of queries.
-
-```
-
-**Architecture Violation**
-```markdown
-**high.must.** Layer violation occurred
-
-The domain layer directly depends on the infrastructure layer.
-Please introduce an interface following the dependency inversion principle.
-```
+### 与 Claude 协作
+- 提供 `gh pr diff`、`gh pr view --json` 等信息后请求分析。
+- 可要求输出带代码片段的 Markdown 评论，直接粘贴到 GitHub。
+- 结合 `/task` 或 `/plan` 为重大问题创建后续改进计划。
 
 ### 注意事项
-
-- **Constructive tone**: Collaborative rather than aggressive communication
-- **Specific suggestions**: Provide solutions along with pointing out problems
-- **Prioritization**: Address in order of Critical → High → Medium → Low
-- **Continuous improvement**: Document review results in a knowledge base
+- 反馈要客观、具体，并附带理由与解决思路。
+- 先处理阻断问题，再讨论建议项，保持节奏可控。
+- 若 PR 过大，建议拆分或引导作者提供更多上下文。

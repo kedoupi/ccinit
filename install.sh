@@ -203,38 +203,6 @@ install_ccinit() {
     print_success "安装完成！"
 }
 
-# 配置模型后端
-config_models() {
-    print_info "配置 AI 模型后端..."
-
-    # 创建 .env 文件
-    cat > "$CLAUDE_DIR/.env" << EOF
-# ccinit 模型配置
-# 由安装程序 v$SCRIPT_VERSION 于 $(date) 生成
-
-# PPINFRA 配置（默认）
-# 请将 '请在此处填入您的API密钥' 替换为您的实际API密钥
-PPINFRA_API_KEY=请在此处填入您的API密钥
-PPINFRA_MODEL=qwen/qwen3-235b-a22b-thinking-2507
-PPINFRA_MAX_TOKENS=120000
-
-# 其他模型选项（取消注释以使用）
-# PPINFRA_MODEL=moonshotai/kimi-k2-instruct
-# PPINFRA_MODEL=deepseek/deepseek-r1-0528
-
-# Gemini 配置（可选）
-# 如需使用Gemini，请取消下面两行注释并填入密钥
-# GEMINI_API_KEY=请在此处填入您的Gemini密钥
-# GEMINI_MODEL=gemini-pro
-
-# 默认模型选择
-DEFAULT_MODEL=$DEFAULT_MODEL
-LANGUAGE=zh
-EOF
-
-    print_success "模型配置完成"
-}
-
 # 验证安装
 verify_installation() {
     if [[ "$VERIFY_INSTALL" != true ]]; then
@@ -252,12 +220,6 @@ verify_installation() {
             checks_passed=false
         fi
     done
-
-    # 检查配置文件
-    if [[ ! -f "$CLAUDE_DIR/.env" ]]; then
-        print_error "缺少配置文件：.env"
-        checks_passed=false
-    fi
 
     if $checks_passed; then
         print_success "安装验证成功！"
@@ -375,9 +337,8 @@ finish_banner() {
     echo "模型：$DEFAULT_MODEL"
     echo ""
     echo "下一步："
-    echo "1. 配置 API 密钥：$CLAUDE_DIR/.env"
-    echo "2. 打开 Claude Desktop → 设置 → 开发者"
-    echo "3. 设置自定义指令路径：$CLAUDE_DIR"
+    echo "1. 打开 Claude Desktop → 设置 → 开发者"
+    echo "2. 设置自定义指令路径：$CLAUDE_DIR"
     echo ""
     echo "开始使用 ccinit！🎉"
     echo "════════════════════════════════════════════════"
@@ -416,9 +377,6 @@ main() {
 
         # 执行安装
         install_ccinit
-
-        # 配置模型后端
-        config_models
 
         # 验证安装
         echo ""
