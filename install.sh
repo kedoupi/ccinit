@@ -15,7 +15,7 @@ trap 'echo "错误发生在第 $LINENO 行。退出代码：$?" >&2' ERR
 # ============================================================================
 
 SCRIPT_VERSION="1.0.0"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
 
 # 默认配置
