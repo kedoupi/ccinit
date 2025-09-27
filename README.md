@@ -26,19 +26,28 @@
 
 ## 🚀 快速开始
 
-### 手动安装
+### 安装方式
 
 ```bash
 # 下载项目
 git clone https://github.com/kedoupi/ccinit.git
+cd ccinit
 
-# 复制到 Claude Desktop 目录
-cp -r ccinit ~/.claude
+# 运行安装脚本
+chmod +x install.sh
+./install.sh
+```
 
-# 设置脚本执行权限
-chmod +x ~/.claude/scripts/*.sh
-find ~/.claude/hooks -name "*.py" -exec chmod +x {} \;
-find ~/.claude/hooks -name "*.sh" -exec chmod +x {} \;
+**可选参数**：
+```bash
+# 使用不同的 AI 模型
+./install.sh --model gemini
+
+# 预览安装（不做实际更改）
+./install.sh --dry-run
+
+# 跳过安装验证
+./install.sh --no-verify
 ```
 
 ### 配置 Claude Desktop
@@ -318,6 +327,7 @@ ccinit/
 ├── commands/          # 智能命令库
 ├── agents/roles/     # 专家角色定义
 ├── scripts/          # 自动化脚本
+├── install.sh        # 本地安装脚本
 └── CLAUDE.md         # 全局指令文件
 ```
 
