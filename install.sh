@@ -19,7 +19,6 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 CLAUDE_DIR="$HOME/.claude"
 
 # 默认配置
-DEFAULT_MODEL="ppinfra"
 DRY_RUN=false
 SHOW_HELP=false
 BACKUP_EXISTING=true
@@ -259,7 +258,6 @@ ccinit (Claude Code Init) 安装程序 v$SCRIPT_VERSION
     $0 [选项]
 
 选项:
-    --model {ppinfra,gemini}  AI 模型后端（默认：ppinfra）
     --target <路径>           目标目录（默认：$HOME/.claude）
     --dry-run                预览模式，不做任何更改
     --no-verify              跳过安装后验证
@@ -269,9 +267,6 @@ ccinit (Claude Code Init) 安装程序 v$SCRIPT_VERSION
 示例:
     # 默认安装
     $0
-
-    # 使用 Gemini 模型
-    $0 --model gemini
 
     # 开发设置（预览模式）
     $0 --target ./test-install --dry-run
@@ -288,15 +283,6 @@ EOF
 parse_arguments() {
     while [[ $# -gt 0 ]]; do
         case $1 in
-            --model)
-                if [[ "$2" =~ ^(ppinfra|gemini)$ ]]; then
-                    DEFAULT_MODEL="$2"
-                    shift 2
-                else
-                    print_error "无效的模型：$2。支持的模型：ppinfra, gemini"
-                    exit 1
-                fi
-                ;;
             --target)
                 CLAUDE_DIR="$2"
                 shift 2
@@ -334,7 +320,6 @@ finish_banner() {
     echo ""
     echo "位置：$CLAUDE_DIR"
     echo "语言：中文"
-    echo "模型：$DEFAULT_MODEL"
     echo ""
     echo "下一步："
     echo "1. 打开 Claude Desktop → 设置 → 开发者"
@@ -368,7 +353,6 @@ main() {
 
     echo ""
     print_info "准备安装到：$CLAUDE_DIR"
-    print_info "使用模型：$DEFAULT_MODEL"
     echo ""
 
     if [[ "$DRY_RUN" != true ]]; then
@@ -383,7 +367,6 @@ main() {
         verify_installation
     else
         print_info "预览：将安装到 $CLAUDE_DIR"
-        print_info "预览：将使用模型 $DEFAULT_MODEL"
     fi
 
     # 显示完成信息

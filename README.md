@@ -40,9 +40,6 @@ chmod +x install.sh
 
 **可选参数**：
 ```bash
-# 使用不同的 AI 模型
-./install.sh --model gemini
-
 # 预览安装（不做实际更改）
 ./install.sh --dry-run
 
